@@ -1,0 +1,21 @@
+p {
+    color: green;
+}
+
+#thoughtbubbleSVG {
+    position: absolute;
+    left:0;
+    top:0;
+    display:none;
+object-fit: fill;
+    width: 0px; height:0px;
+}
+
+@keyframes thoughtPopKey {
+    0% {transform:scale(0.0);}
+    100% {transform:scale(2.0);}
+}
+
+.thoughtPop {
+    animation: thoughtPopKey 5s 1;
+}
