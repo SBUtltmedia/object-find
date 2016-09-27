@@ -2,20 +2,56 @@ p {
     color: green;
 }
 
-#thoughtbubbleSVG {
-    position: absolute;
-    left:0;
-    top:0;
-    display:none;
-object-fit: fill;
-    width: 0px; height:0px;
+.bubble 
+{
+position: absolute;
+display:inline-block;
+max-width:250px;
+min-height:1.5em;
+padding: 20px;
+background: #FFFFFF;
+border: #7F7F7F solid 4px;
+-webkit-border-radius: 20px;
+-moz-border-radius: 20px;
+border-radius: 20px;
 }
+
+.bubble:after 
+{
+content: "";
+position: absolute;
+bottom: -15px;
+left: 60%;
+border-style: solid;
+border-width: 15px 15px 0;
+border-color: #FFFFFF transparent;
+display: block;
+width: 0;
+z-index: 1;
+}
+
+.bubble:before 
+{
+content: "";
+position: absolute;
+bottom: -19.5px;
+left: calc(60% - 3px) ;
+border-style: solid;
+border-width: 18px 18px 0;
+border-color: #7F7F7F transparent;
+display: block;
+width: 0;
+z-index: 0;
+}
+
+
 
 @keyframes thoughtPopKey {
     0% {transform:scale(0.0);}
-    100% {transform:scale(2.0);}
+    100% {transform:scale(1.0);}
 }
 
 .thoughtPop {
-    animation: thoughtPopKey 5s 1;
+    animation: thoughtPopKey 1s 1;
 }
+
