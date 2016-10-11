@@ -10,7 +10,9 @@ var clickable = [{
 }, {
     Name: "Rat_1",
     Text: "This is a rat.",
-    totalAnimationFrames: 3
+    totalAnimationFrames: 3,
+    loopAmount: 3
+
 }];
 var lookup = {};
 var animationItem;
@@ -49,7 +51,7 @@ function roomSvgLoad() {
             //console.log(evt.clientX) 
         $("#thoughtBubble").text(clickable[lookup[clickedItem]].Text)
         $("#thoughtBubble").addClass("thoughtPop");
-        startAnimating(1,clickable[lookup[clickedItem]])
+        startAnimating(5, clickable[lookup[clickedItem]])
     })
 
 
@@ -66,8 +68,10 @@ var fps, fpsInterval, startTime, now, then, elapsed;
 // initialize the timer variables and start the animation
 
 function startAnimating(fps, item) {
+   
     animationItem = item;
-    animationFrame = 1;
+    animationFrame = 0;
+    loopCount = 0;
     fpsInterval = 1000 / fps;
     then = Date.now();
     startTime = then;
@@ -89,24 +93,52 @@ function animate() {
     // if enough time has elapsed, draw the next frame
 
     if (elapsed > fpsInterval) {
-console.log(animationFrame, animationItem.totalAnimationFrames)
-        // Get ready for next frame by setting then=now, but also adjust for your
-        // specified fpsInterval not being a multiple of RAF's interval (16.7ms)
-        then = now - (elapsed % fpsInterval);
-if (animationFrame < animationItem.totalAnimationFrames) {
-var selector = "#" + animationItem.Name.split("_")[0] +"_";
-        $( selector + animationFrame ).attr("style","display:none")
-       
-        animationFrame++
-         $( selector + animationFrame ).attr("style","display:inline")
-        // Put your drawing code here
-}
-    
-    
-    else
-        {
-             $( selector + animationFrame ).css("display","none")  
-            $( selector + 1 ).css("display","inline")
+          then = now - (elapsed % fpsInterval);
+        var itemID = animationItem.Name.split("_")[0] + "_";
+        var selector = "#" + itemID;
+        $("[id^='" + itemID + "']").attr("style", "display:none")
+
+        if (animationFrame < animationItem.totalAnimationFrames * animationItem.loopAmount) {
+           
+            
+            var displayFrame = (animationFrame % animationItem.totalAnimationFrames) + 1
+            console.log(displayFrame)
+            $(selector +displayFrame ).attr("style", "display:inline")
+            animationFrame++
+        }
+        else {
+            
+         $(selector +1 ).attr("style", "display:inline")    
         }
     }
+
+
+
+
+
+
+    //            // Get ready for next frame by setting then=now, but also adjust for your
+    //            // specified fpsInterval not being a multiple of RAF's interval (16.7ms)
+    //        then = now - (elapsed % fpsInterval);
+    //        if (animationFrame < animationItem.totalAnimationFrames) {
+    //
+    //
+    //    animationFrame++
+    //          
+    //            console.log(animationFrame, animationItem.totalAnimationFrames)
+    //             $( selector + animationFrame ).attr("style","display:inline")
+    //           
+    //            // Put your drawing code here
+    //        } else if (loopCount < animationItem.loopAmount) {
+    //            animationFrame = 0;
+    //        
+    //            loopCount++;
+    //
+    //        } else {
+    //            //   $( selector + 1 ).css("display","inline")
+    //        }
+    //
+    //
+    //
+
 }
