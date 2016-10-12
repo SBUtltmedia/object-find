@@ -11,9 +11,48 @@ var clickable = [{
     Name: "Rat_1",
     Text: "This is a rat.",
     totalAnimationFrames: 3,
+    loopAmount: 3,
+   
+}, {
+    Name: "Cat_1",
+    Text: "This is a cat.",
+    totalAnimationFrames: 3,
     loopAmount: 3
-
+}, {
+    Name: "Dog_1",
+    Text: "This is a dog.",
+    totalAnimationFrames: 3,
+    loopAmount: 3
+}, {
+    Name: "Febreze",
+    Text: "This is lung cancer."
+}, {
+    Name: "Spray_1",
+    totalAnimationFrames: 4,
+    loopAmount: 3
+}, {
+    Name: "Bed",
+    Text: "This is a bed."
+}, {
+    Name: "Plant",
+    Text: "This is a plant."
+}, {
+    Name: "Dresser",
+    Text: "This is a dresser."
+}, {
+    Name: "Nightstand",
+    Text: "This is a nightstand."
+}, {
+    Name: "Roach",
+    Text: "This is Satan's little minion. "
+}, {
+    Name: "Dust_1",
+    Text: "This is some dust.",
+    totalAnimationFrames: 3, 
+    loopAmount: 3,
+     frameRate: 10
 }];
+var defaultFrameRate = 5
 var lookup = {};
 var animationItem;
 var animationFrame;
@@ -51,7 +90,9 @@ function roomSvgLoad() {
             //console.log(evt.clientX) 
         $("#thoughtBubble").text(clickable[lookup[clickedItem]].Text)
         $("#thoughtBubble").addClass("thoughtPop");
-        startAnimating(5, clickable[lookup[clickedItem]])
+        var item = clickable[lookup[clickedItem]];
+        var fps= item.frameRate || defaultFrameRate;                   
+        startAnimating(fps , item )
     })
 
 
