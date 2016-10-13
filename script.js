@@ -15,7 +15,7 @@ var clickable = [{
    
 }, {
     Name: "Cat_1",
-    Text: "This is a cat.",
+    Text: "Furry pets can trigger an asthma attack. Keep furry pets out of bedrooms. Wash furry pets often",
     totalAnimationFrames: 3,
     loopAmount: 3
 }, {
@@ -24,11 +24,9 @@ var clickable = [{
     totalAnimationFrames: 3,
     loopAmount: 3
 }, {
-    Name: "Febreze",
-    Text: "This is lung cancer."
-}, {
-    Name: "Spray_1",
-    totalAnimationFrames: 4,
+    Name: "Febreze_1",
+    Text: "This is lung cancer.",
+    totalAnimationFrames: 5,
     loopAmount: 3
 }, {
     Name: "Bed",
@@ -85,7 +83,7 @@ function roomSvgLoad() {
 
         $("#thoughtBubble").removeClass("thoughtPop");
         void element.offsetWidth;
-        var clickedItem = $(evt.target).closest('[id]').attr("id");
+        var clickedItem = $(evt.target).closest('.clickable').attr("id");
         console.log(clickedItem)
             //console.log(evt.clientX) 
         $("#thoughtBubble").text(clickable[lookup[clickedItem]].Text)
@@ -142,7 +140,9 @@ function animate() {
         if (animationFrame < animationItem.totalAnimationFrames * animationItem.loopAmount) {
            
             
-            var displayFrame = (animationFrame % animationItem.totalAnimationFrames) + 1
+            //var displayFrame = (animationFrame % animationItem.totalAnimationFrames) + 1
+            var y = animationItem.loopAmount
+            var displayFrame = Math.abs((animationFrame+y-2)%((y-1)*2)-(y-1))+1
             console.log(displayFrame)
             $(selector +displayFrame ).attr("style", "display:inline")
             animationFrame++
