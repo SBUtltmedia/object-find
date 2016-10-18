@@ -12,12 +12,13 @@ var clickable = [{
     Text: "This is a rat.",
     totalAnimationFrames: 3,
     loopAmount: 3,
-   
+
 }, {
     Name: "Cat_1",
     Text: "Furry pets can trigger an asthma attack. Keep furry pets out of bedrooms. Wash furry pets often",
     totalAnimationFrames: 3,
-    loopAmount: 3
+    loopAmount: 3,
+    audioFile: "Cat.mp3"
 }, {
     Name: "Dog_1",
     Text: "This is a dog.",
@@ -46,14 +47,19 @@ var clickable = [{
 }, {
     Name: "Dust_1",
     Text: "This is some dust.",
-    totalAnimationFrames: 3, 
+    totalAnimationFrames: 3,
     loopAmount: 3,
-     frameRate: 10
+    frameRate: 10
 }];
 var defaultFrameRate = 5
 var lookup = {};
 var animationItem;
 var animationFrame;
+var soundEffects = {};
+
+
+
+
 $(function () {
 
     $("#room").css("font-size", "100px");
@@ -64,9 +70,15 @@ $(function () {
 
 
 
+
+
+
 function roomSvgLoad() {
 
     $(clickable).each(function (index, value) {
+        if ("audioFile" in value) {
+            soundEffects[value.Name] = ss_soundbits("audio/" + value.audioFile);
+        }
         console.log($(value))
         $("#" + value.Name).addClass("clickable")
         lookup[value.Name] = index;
@@ -89,8 +101,13 @@ function roomSvgLoad() {
         $("#thoughtBubble").text(clickable[lookup[clickedItem]].Text)
         $("#thoughtBubble").addClass("thoughtPop");
         var item = clickable[lookup[clickedItem]];
-        var fps= item.frameRate || defaultFrameRate;                   
-        startAnimating(fps , item )
+        var fps = item.frameRate || defaultFrameRate;
+        console.log(soundEffects, soundEffects[item.Name])
+
+        if ("audioFile" in item) {
+            soundEffects[item.Name].playclip();
+        }
+        startAnimating(fps, item)
     })
 
 
@@ -107,7 +124,7 @@ var fps, fpsInterval, startTime, now, then, elapsed;
 // initialize the timer variables and start the animation
 
 function startAnimating(fps, item) {
-   
+
     animationItem = item;
     animationFrame = 0;
     loopCount = 0;
@@ -132,24 +149,23 @@ function animate() {
     // if enough time has elapsed, draw the next frame
 
     if (elapsed > fpsInterval) {
-          then = now - (elapsed % fpsInterval);
+        then = now - (elapsed % fpsInterval);
         var itemID = animationItem.Name.split("_")[0] + "_";
         var selector = "#" + itemID;
         $("[id^='" + itemID + "']").attr("style", "display:none")
 
         if (animationFrame < animationItem.totalAnimationFrames * animationItem.loopAmount) {
-           
-            
+
+
             //var displayFrame = (animationFrame % animationItem.totalAnimationFrames) + 1
             var y = animationItem.loopAmount
-            var displayFrame = Math.abs((animationFrame+y-2)%((y-1)*2)-(y-1))+1
+            var displayFrame = Math.abs((animationFrame + y - 2) % ((y - 1) * 2) - (y - 1)) + 1
             console.log(displayFrame)
-            $(selector +displayFrame ).attr("style", "display:inline")
+            $(selector + displayFrame).attr("style", "display:inline")
             animationFrame++
-        }
-        else {
-            
-         $(selector +1 ).attr("style", "display:inline")    
+        } else {
+
+            $(selector + 1).attr("style", "display:inline")
         }
     }
 
