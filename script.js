@@ -13,10 +13,10 @@ var soundEffects = {};
 $(function () {
 
    $.getJSON( "clickable.json", function( data ) { 
-    clickable = data;
+    clickable = data.targets;
        console.log(clickable);
     $("#room").css("font-size", "100px");
-    $("#roomSVG").load("img/asthmaRoom.svg", roomSvgLoad);
+    $("#roomSVG").load("img/" + data.roomImage, roomSvgLoad);
    })
 });
 
