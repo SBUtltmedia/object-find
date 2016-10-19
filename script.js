@@ -1,56 +1,6 @@
-var clickable = [{
-    Name: "ceilingLight",
-    Text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-}, {
-    Name: "Window1",
-    Text: "This is Window #1"
-}, {
-    Name: "Window2",
-    Text: "This is Window #2"
-}, {
-    Name: "Rat_1",
-    Text: "This is a rat.",
-    totalAnimationFrames: 3,
-    loopAmount: 3,
 
-}, {
-    Name: "Cat_1",
-    Text: "Furry pets can trigger an asthma attack. Keep furry pets out of bedrooms. Wash furry pets often",
-    totalAnimationFrames: 3,
-    loopAmount: 3,
-    audioFile: "Cat.mp3"
-}, {
-    Name: "Dog_1",
-    Text: "This is a dog.",
-    totalAnimationFrames: 3,
-    loopAmount: 3
-}, {
-    Name: "Febreze_1",
-    Text: "This is lung cancer.",
-    totalAnimationFrames: 5,
-    loopAmount: 3
-}, {
-    Name: "Bed",
-    Text: "This is a bed."
-}, {
-    Name: "Plant",
-    Text: "This is a plant."
-}, {
-    Name: "Dresser",
-    Text: "This is a dresser."
-}, {
-    Name: "Nightstand",
-    Text: "This is a nightstand."
-}, {
-    Name: "Roach",
-    Text: "This is Satan's little minion. "
-}, {
-    Name: "Dust_1",
-    Text: "This is some dust.",
-    totalAnimationFrames: 3,
-    loopAmount: 3,
-    frameRate: 10
-}];
+var clickable;
+
 var defaultFrameRate = 5
 var lookup = {};
 var animationItem;
@@ -62,9 +12,12 @@ var soundEffects = {};
 
 $(function () {
 
+   $.getJSON( "clickable.json", function( data ) { 
+    clickable = data;
+       console.log(clickable);
     $("#room").css("font-size", "100px");
     $("#roomSVG").load("img/asthmaRoom.svg", roomSvgLoad);
-
+   })
 });
 
 

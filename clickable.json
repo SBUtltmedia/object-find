@@ -1,0 +1,37 @@
+[
+{
+    "Name": "ceilingLight",
+    "Text": "This is a ceiling lamp. It is not an asthma trigger."
+}, {
+    "Name": "Window1",
+    "Text": "This is a window. It is not an asthma trigger."
+}, {
+    "Name": "Window2",
+    "Text": "This is also a window. It is not an asthma trigger."
+}, {
+    "Name": "Cat_1",
+    "Text": "Furry pets can trigger an asthma attack. Keep furry pets out of bedrooms. Wash furry pets often",
+    "totalAnimationFrames": 3,
+    "loopAmount": 3,
+    "audioFile": "Cat.mp3"
+}, {
+    "Name": "Bed",
+    "Text": "This is a bed. ASTHMA TRIGGER"
+}, {
+    "Name": "Plant",
+    "Text": "This is a plant. It's fake. Not an asthma trigger."
+}, {
+    "Name": "Dresser",
+    "Text": "This is a dresser. It's a piece of furniture. Your lungs are safe."
+}, {
+    "Name": "Nightstand",
+    "Text": "This is a nightstand. It is also a piece of furniture. Your lungs are still safe."
+}, {
+    "Name": "Dust_1",
+    "Text": "This is some dust. Beware, the ultimate asthma trigger.",
+    "totalAnimationFrames": 3,
+    "loopAmount": 3,
+    "frameRate": 10
+}
+
+]
