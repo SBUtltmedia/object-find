@@ -51,7 +51,7 @@ function roomSvgLoad() {
         var clickedItem = $(evt.target).closest('.clickable').attr("id");
         console.log(clickedItem)
             //console.log(evt.clientX) 
-        $("#thoughtBubble").text(clickable[lookup[clickedItem]].Text)
+        $("#thoughtBubble").html(clickable[lookup[clickedItem]].Text)
         $("#thoughtBubble").addClass("thoughtPop");
         var item = clickable[lookup[clickedItem]];
         var fps = item.frameRate || defaultFrameRate;
@@ -111,7 +111,7 @@ function animate() {
 
 
             //var displayFrame = (animationFrame % animationItem.totalAnimationFrames) + 1
-            var y = animationItem.loopAmount
+            var y = animationItem.totalAnimationFrames
             var displayFrame = Math.abs((animationFrame + y - 2) % ((y - 1) * 2) - (y - 1)) + 1
             console.log(displayFrame)
             $(selector + displayFrame).attr("style", "display:inline")

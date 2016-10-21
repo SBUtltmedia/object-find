@@ -1,6 +1,11 @@
-p {
-    color: green;
+* {
+    font-family: "Lucida Sans", sans-serif; 
 }
+
+b {
+    color: red;
+}
+
 
 .bubble 
 {

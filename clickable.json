@@ -3,56 +3,56 @@
     "targets": [
         {
             "Name": "ceilingLight",
-            "Text": "This is a ceiling lamp. It is not an asthma trigger."
+            "Text": "This is a ceiling lamp. It is <b>not</b> an asthma trigger."
 }, {
             "Name": "Window1",
-            "Text": "This is a window. It is not an asthma trigger."
-}, {
-            "Name": "Window2",
-            "Text": "This is also a window. It is not an asthma trigger."
+            "Text": "This is a window. It is <b>not</b> an asthma trigger."
 }, {
             "Name": "Cat_1",
-            "Text": "Furry pets can trigger an asthma attack. Keep furry pets out of bedrooms. Wash furry pets often",
+            "Text": "<b>Furry pets</b> can trigger an asthma attack. <ul><li>Keep furry pets out of bedrooms.</li><br /><li>Wash furry pets often.</li></ul>",
             "totalAnimationFrames": 3,
             "loopAmount": 3,
             "audioFile": "Cat.mp3"
 }, {
             "Name": "Bed",
-            "Text": "This is a bed. ASTHMA TRIGGER"
+            "Text": "Dust mites live in items made of thick fivers, such as <b>bedding</b>. <ul><li>Cover mattress, pillows, and all bedding with allergy-proof dust mite encasements.</li><br /><li>Wash and dry all bedding on high heat at least every two weeks</li><br /><li>Keep humidity level in home under 50%.</li></ul>"
 }, {
             "Name": "Plant",
-            "Text": "This is a plant. It's fake. Not an asthma trigger."
+            "Text": "This is a plant. It is <b>not</b> an asthma trigger. Keep looking!"
 }, {
             "Name": "Dresser",
-            "Text": "This is a dresser. It's a piece of furniture. Your lungs are safe."
+            "Text": "This is a dresser. It is <b>not</b> an asthma trigger. Keep looking!"
 }, {
             "Name": "Nightstand",
-            "Text": "This is a nightstand. It is also a piece of furniture. Your lungs are still safe."
+            "Text": "This is a nightstand. It is <b>not</b> an asthma trigger. Keep looking!"
 }, {
             "Name": "Dust_1",
-            "Text": "This is some dust. Beware, the ultimate asthma trigger.",
-            "totalAnimationFrames": 3,
-            "loopAmount": 3,
-            "frameRate": 10
+            "Text": "<b>House dust</b> is a common trigger that may also contain tiny particles of <b>pollen, mold, cloth fibers,</b> and <b>detergents</b>.<ul><li>Central heating and A/C systems may help control dust, but be sure to change filters frequently.</li><br /><li>Wipe away dust with a damp cloth and vacuum once a week.</li><br /><li>Use furniture polish to help reduce dust and other allergens.</li></ul>",
+            "totalAnimationFrames": 8,
+            "loopAmount": 1,
+            "frameRate": 3
 }, {
             "Name": "Frog",
-            "Text": "Dust mites live in items made of thick fibers, such as stuffed toys. Stuffed toys are a source for dust mites. Reduce or remove stuffed toys from the child's bedroom.",
+            "Text": "Dust mites live in items made of thick fibers, such as <b>stuffed toys</b>. <ul><li>Stuffed toys are a source for dust mites.</li><br /><li>Reduce or remove stuffed toys from the child's bedroom.</li></ul>",
             "audioFile": "Frog.mp3"
 }, {
             "Name": "Bunny",
-            "Text": "Dust mites live in items made of thick fibers, such as stuffed toys. Stuffed toys are a source for dust mites. Reduce or remove stuffed toys from the child's bedroom.",
+            "Text": "Dust mites live in items made of thick fibers, such as <b>stuffed toys</b>. <ul><li>Stuffed toys are a source for dust mites.</li><br /><li>Reduce or remove stuffed toys from the child's bedroom.</li></ul>",
             "audioFile": "Squeak.mp3"
 }, {
             "Name": "Bear",
-            "Text": "Dust mites live in items made of thick fibers, such as stuffed toys. Stuffed toys are a source for dust mites. Reduce or remove stuffed toys from the child's bedroom.",
+            "Text": "Dust mites live in items made of thick fibers, such as <b>stuffed toys</b>. <ul><li>Stuffed toys are a source for dust mites.</li><br /><li>Reduce or remove stuffed toys from the child's bedroom.</li></ul>",
             "audioFile": "Squeak2.mp3"
 }, {
             "Name": "Perfume_1",
-            "Text": "Spray and strong scents can trigger asthma. Avoid use of sprays in home. Avoid use of products that are heavily scented in home.",
+            "Text": "<b>Sprays</b> and <b>strong scents</b> can trigger asthma. <ul><li>Avoid use of sprays in home.</li><br /><li>Avoid use of products that are heavily scented in home.</li></ul>",
             "totalAnimationFrames": 4,
             "loopAmount": 3,
             "frameRate": 10,
             "audioFile": "Spray.mp3"
+}, {
+            "Name": "Door",
+            "Text": "<b>Note:</b> This will lead back to the rest of the house."
 }
 
 ]
