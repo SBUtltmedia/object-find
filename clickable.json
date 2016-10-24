@@ -53,6 +53,12 @@
 }, {
             "Name": "Door",
             "Text": "<b>Note:</b> This will lead back to the rest of the house."
+}, {
+            "Name": "Curtains_1",
+            "Text": "Pay attention to <b>pollen</b> levels. <ul><li>Keep windows closed in the child's bedroom.</li><br /><li>Use window filters, air conditioning, and air purifiers to filter out pollen airborne in the home.</li></ul>",
+            "totalAnimationFrames": 5,
+            "loopAmount": 3, 
+            "frameRate": 5
 }
 
 ]
