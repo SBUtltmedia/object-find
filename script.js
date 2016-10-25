@@ -28,6 +28,7 @@ $(function () {
 
 function roomSvgLoad() {
 
+    
     $(clickable).each(function (index, value) {
         if ("audioFile" in value) {
             soundEffects[value.Name] = ss_soundbits("audio/" + value.audioFile);
@@ -44,10 +45,12 @@ function roomSvgLoad() {
             "top": evt.clientY + "px",
             "display": "block"
         })
-        element = document.getElementById("thoughtBubble");
+        //element = document.getElementById("thoughtBubble");
+        //element.css()
 
         $("#thoughtBubble").removeClass("thoughtPop");
-        void element.offsetWidth;
+          $("#thoughtBubble").css("display","inline")
+        //void element.offsetWidth;
         var clickedItem = $(evt.target).closest('.clickable').attr("id");
         console.log(clickedItem)
             //console.log(evt.clientX) 
