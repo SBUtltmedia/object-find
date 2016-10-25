@@ -58,3 +58,7 @@ border-radius: 20px;
     animation: thoughtPopKey 1s 1;
 }
 
+svg {
+    width: 100%;
+}
+

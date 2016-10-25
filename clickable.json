@@ -15,7 +15,8 @@
             "audioFile": "Cat.mp3"
 }, {
             "Name": "Bed",
-            "Text": "Dust mites live in items made of thick fivers, such as <b>bedding</b>. <ul><li>Cover mattress, pillows, and all bedding with allergy-proof dust mite encasements.</li><br /><li>Wash and dry all bedding on high heat at least every two weeks</li><br /><li>Keep humidity level in home under 50%.</li></ul>"
+            "Text": "Dust mites live in items made of thick fibers, such as <b>bedding</b>. <ul><li>Cover mattress, pillows, and all bedding with allergy-proof dust mite encasements.</li><br /><li>Wash and dry all bedding on high heat at least every two weeks</li><br /><li>Keep humidity level in home under 50%.</li></ul>",
+            "audioFile": "Bedsheets.mp3"
 }, {
             "Name": "Plant",
             "Text": "This is a plant. It is <b>not</b> an asthma trigger. Keep looking!"
@@ -57,8 +58,15 @@
             "Name": "Curtains_1",
             "Text": "Pay attention to <b>pollen</b> levels. <ul><li>Keep windows closed in the child's bedroom.</li><br /><li>Use window filters, air conditioning, and air purifiers to filter out pollen airborne in the home.</li></ul>",
             "totalAnimationFrames": 5,
-            "loopAmount": 3, 
-            "frameRate": 5
+            "loopAmount": 10, 
+            "frameRate": 5,
+            "audioFile": "Outside.mp3"
+}, {
+            "Name": "Carpet",
+            "Text": "Dust mites live in items made of thick fibers, such as <b>carpets</b> or <b>rugs</b>. <ul><li>Avoid use of or remove all carpeting in the home.</li><br /><li>Replace carpeting with flooring that can be <b>damp mopped often</b>.</li><br /><li>If you must retain the carpet, use a vacuum cleaner with a high efficiency filter or a central vacuum cleaner.</li></ul>"
+}, {
+            "Name": "Ledge",
+            "Text": "This is the window sill. It is <b>not</b> an asthma trigger, but you're getting warmer!"
 }
 
 ]
