@@ -1,4 +1,3 @@
-
 var clickable;
 
 var defaultFrameRate = 5
@@ -6,18 +5,18 @@ var lookup = {};
 var animationItem;
 var animationFrame;
 var soundEffects = {};
-
-
+var animatingList =[];
+var isAnimating;
 
 
 $(function () {
 
-   $.getJSON( "clickable.json", function( data ) { 
-    clickable = data.targets;
-       console.log(clickable);
-    $("#room").css("font-size", "100px");
-    $("#roomSVG").load("img/" + data.roomImage, roomSvgLoad);
-   })
+    $.getJSON("clickable.json", function (data) {
+        clickable = data.targets;
+        console.log(clickable);
+        $("#room").css("font-size", "100px");
+        $("#roomSVG").load("img/" + data.roomImage, roomSvgLoad);
+    })
 });
 
 
@@ -28,7 +27,7 @@ $(function () {
 
 function roomSvgLoad() {
 
-    
+
     $(clickable).each(function (index, value) {
         if ("audioFile" in value) {
             soundEffects[value.Name] = ss_soundbits("audio/" + value.audioFile);
@@ -41,21 +40,28 @@ function roomSvgLoad() {
     console.log("something")
     $(".clickable").click(function (evt) {
         $("#thoughtBubble").css({
-            "left": evt.clientX + "px",
-            "top": evt.clientY + "px",
-            "display": "block"
-        })
-        //element = document.getElementById("thoughtBubble");
-        //element.css()
+                "left": evt.clientX + "px",
+                "top": evt.clientY + "px",
+                "display": "block"
+            })
+            //element = document.getElementById("thoughtBubble");
+            //element.css()
 
-        $("#thoughtBubble").removeClass("thoughtPop");
-          $("#thoughtBubble").css("display","inline")
-        //void element.offsetWidth;
+
+        $("#thoughtBubble").removeClass("thoughtPop").animate({
+            'nothing': null
+        }, 1, function () {
+            $(this).addClass("thoughtPop");
+        });
+
+        //$("#thoughtBubble").removeClass("thoughtPop");
+        $("#thoughtBubble").css("display", "inline")
+            //void element.offsetWidth;
         var clickedItem = $(evt.target).closest('.clickable').attr("id");
         console.log(clickedItem)
             //console.log(evt.clientX) 
         $("#thoughtBubble").html(clickable[lookup[clickedItem]].Text)
-        $("#thoughtBubble").addClass("thoughtPop");
+            // $("#thoughtBubble").addClass("thoughtPop");
         var item = clickable[lookup[clickedItem]];
         var fps = item.frameRate || defaultFrameRate;
         console.log(soundEffects, soundEffects[item.Name])
@@ -82,8 +88,8 @@ var fps, fpsInterval, startTime, now, then, elapsed;
 function startAnimating(fps, item) {
 
     animationItem = item;
-    animationFrame = 0;
-    loopCount = 0;
+    animationItem.animationFrame = 1;
+    animatingList.push(animationItem)
     fpsInterval = 1000 / fps;
     then = Date.now();
     startTime = then;
@@ -95,7 +101,7 @@ function animate() {
 
     // request another frame
 
-    requestAnimationFrame(animate);
+    isAnimating= requestAnimationFrame(animate);
 
     // calc elapsed time since last loop
 
@@ -106,27 +112,26 @@ function animate() {
 
     if (elapsed > fpsInterval) {
         then = now - (elapsed % fpsInterval);
-        var itemID = animationItem.Name.split("_")[0] + "_";
+        animatingList.forEach(function(item,index){
+        //console.log(item)
+        var itemID = item.Name.split("_")[0] + "_";
         var selector = "#" + itemID;
         $("[id^='" + itemID + "']").attr("style", "display:none")
 
-        if (animationFrame < animationItem.totalAnimationFrames * animationItem.loopAmount) {
+        if (item.animationFrame < animationItem.totalAnimationFrames * animationItem.loopAmount) {
 
 
             //var displayFrame = (animationFrame % animationItem.totalAnimationFrames) + 1
-            var y = animationItem.totalAnimationFrames
-            var displayFrame = Math.abs((animationFrame + y - 2) % ((y - 1) * 2) - (y - 1)) + 1
-            console.log(displayFrame)
+            var y = item.totalAnimationFrames
+            var displayFrame = Math.abs((item.animationFrame + y - 2) % ((y - 1) * 2) - (y - 1)) + 1
+            console.log(displayFrame, item.animationFrame, item.totalAnimationFrames)
             $(selector + displayFrame).attr("style", "display:inline")
-            animationFrame++
+            item.animationFrame++
         } else {
-
+            delete  animatingList[index]
             $(selector + 1).attr("style", "display:inline")
         }
-    }
-
-
-
+    });
 
 
 
@@ -154,4 +159,4 @@ function animate() {
     //
     //
 
-}
+}}
