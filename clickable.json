@@ -18,9 +18,6 @@
             "Text": "Dust mites live in items made of thick fibers, such as <b>bedding</b>. <ul><li>Cover mattress, pillows, and all bedding with allergy-proof dust mite encasements.</li><br /><li>Wash and dry all bedding on high heat at least every two weeks</li><br /><li>Keep humidity level in home under 50%.</li></ul>",
             "audioFile": "Bedsheets.mp3"
 }, {
-            "Name": "Plant",
-            "Text": "This is a plant. It is <b>not</b> an asthma trigger. Keep looking!"
-}, {
             "Name": "Dresser",
             "Text": "This is a dresser. It is <b>not</b> an asthma trigger. Keep looking!"
 }, {
@@ -69,10 +66,16 @@
             "Text": "This is the window sill. It is <b>not</b> an asthma trigger, but you're getting warmer!"
 }, {
             "Name": "Clock",
-            "Text": "This is an alarm clock. It is <b>not</b> an asthma trigger. Keep searching!"
+            "Text": "This is an alarm clock. It is <b>not</b> an asthma trigger. You're getting warmer, though!"
 }, {
             "Name": "Books",
             "Text": "<b>House dust</b> is a common trigger that may also contain tiny particles of <b>pollen, mold, cloth fibers,</b> and <b>detergents</b>.<ul><li>Central heating and A/C systems may help control dust, but be sure to change filters frequently.</li><br /><li>Wipe away dust with a damp cloth and vacuum once a week.</li><br /><li>Use furniture polish to help reduce dust and other allergens.</li></ul>"
+}, {
+            "Name": "Mirror",
+            "Text": "This is a mirror. It is <b>not</b> an asthma trigger. Keep looking!"
+}, {
+            "Name": "Hairbrush",
+            "Text": "This is a brush. It is <b>not</b> an asthma trigger. You're getting warmer, though!"
 }
 
 ]
