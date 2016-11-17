@@ -14,7 +14,7 @@ $(function () {
     $.getJSON("clickable.json", function (data) {
         clickable = data.targets;
         console.log(clickable);
-        $("#room").css("font-size", "100px");
+        //$("#room").css("font-size", "100px");
         $("#roomSVG").load("img/" + data.roomImage, roomSvgLoad);
     })
 });
@@ -39,6 +39,7 @@ function roomSvgLoad() {
 
     console.log("something")
     $(".clickable").click(function (evt) {
+        console.log($("svg").width(), $("svg").height()); 
         $("#thoughtBubble").css({
                 "left": evt.clientX + "px",
                 "top": evt.clientY + "px",
