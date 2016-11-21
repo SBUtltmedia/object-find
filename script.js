@@ -70,7 +70,13 @@ function roomSvgLoad() {
         if ("audioFile" in item) {
             soundEffects[item.Name].playclip();
         }
-        startAnimating(fps, item)
+        
+        if ("triggerClicked" in item) {
+            item.triggerClicked = true;
+        }
+        
+        console.log(item.triggerClicked);
+        startAnimating(fps, item);
     })
 
 
