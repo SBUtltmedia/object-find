@@ -12,7 +12,7 @@ var totalTriggers = 0;
 
 
 $(function(){
- loadNewRoom("bedRoom")
+ loadNewRoom("bedRoom");
    
 });
 function loadNewRoom(roomName)
@@ -43,21 +43,27 @@ function roomSvgLoad() {
 
     console.log("something")
     $(".clickable").click(function (evt) {
-        console.log($("svg").width(), $("svg").height()); 
-        $("#thoughtBubble").css({
+        console.log($("svg").width(), $("svg").height());
+        $("#thoughtBubble").removeClass("thoughtPop");
+        setTimeout(function() {
+            $("#thoughtBubble").addClass("thoughtPop");
+            $("#thoughtBubble").css({
                 "left": evt.clientX + "px",
                 "top": evt.clientY + "px",
                 "display": "block"
             })
+        }, 20);
+        
             //element = document.getElementById("thoughtBubble");
             //element.css()
 
 
-        $("#thoughtBubble").removeClass("thoughtPop").animate({
-            'nothing': null
-        }, 1, function () {
-            $(this).addClass("thoughtPop");
-        });
+//        $("#thoughtBubble").removeClass("thoughtPop").animate({
+//            'nothing': null
+//        }, 1, function () {
+//            $(this).addClass("thoughtPop");
+//        });
+        
 
         //$("#thoughtBubble").removeClass("thoughtPop");
         $("#thoughtBubble").css("display", "inline")
@@ -81,7 +87,7 @@ function roomSvgLoad() {
         }
         
         if (item.Name === "Door") {
-            if(triggersFound === 10){
+            if(triggersFound >= 5){
                 triggersFound = 0
                 for (i = 0; i<clickable.length; i++) {
                     if ("triggerClicked" in clickable[i] && "alreadyClicked" in clickable[i]){
