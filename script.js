@@ -1,68 +1,34 @@
-<<<<<<< HEAD
-var clickable = [{Name:"Mirror",Text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et scelerisque libero. Nunc sed nunc nec nisi mollis vestibulum. Praesent pulvinar magna et condimentum lacinia. Donec tortor felis, fringilla sed ipsum vel, finibus placerat urna. Maecenas consectetur suscipit luctus. Nunc tristique porttitor porta. Donec tincidunt eleifend vehicula. Ut iaculis sed ante a bibendum."}, {Name:"TV",Text:"TV Text"}, {Name:"Pillow",Text:"Pillow Text"}, {Name:"Bed",Text:"Bed Text"}, {Name:"Table",Text:"Table Text"}];
-=======
 var clickable;
 
 var defaultFrameRate = 5
->>>>>>> origin/master
 var lookup = {};
 var animationItem;
 var animationFrame;
 var soundEffects = {};
 var animatingList =[];
 var isAnimating;
+var triggersFound = 0;
+var totalTriggers = 0;
 
 
-$(function () {
-
-<<<<<<< HEAD
-  $("#room").css("font-size","100px");  
-    $("#roomSVG").load("img/room.svg", roomSvgLoad  );
-
-=======
-    $.getJSON("clickable.json", function (data) {
+$(function(){
+ loadNewRoom("bedRoom")
+   
+});
+function loadNewRoom(roomName)
+    {
+ $.getJSON(roomName+".json", function (data) {
         clickable = data.targets;
         console.log(clickable);
         //$("#room").css("font-size", "100px");
         $("#roomSVG").load("img/" + data.roomImage, roomSvgLoad);
-    })
->>>>>>> origin/master
-});
-
-
-
-
-<<<<<<< HEAD
-function roomSvgLoad (){
+    })      
+    }
     
-  $(clickable).each(function( index, value ) { 
-      console.log($(value))     
-       $("#" + value.Name).addClass("clickable")
-       lookup[value.Name]=index;
-   })
-                 
-  console.log("something")  
- $(".clickable").click( function(evt){
-  $("#thoughtBubble").css({ "left":evt.clientX+ "px", "top": evt.clientY+"px","display":"block" })
-  element = document.getElementById("thoughtBubble");
-     
-  $("#thoughtBubble").removeClass("thoughtPop");
-     void element.offsetWidth;
-    console.log(lookup) 
-     var clickedItem = $(evt.target).closest('[id]').attr("id");
-    //console.log(evt.clientX) 
-     $("#thoughtBubble").text(clickable[lookup[clickedItem]].Text)
-       $("#thoughtBubble").addClass("thoughtPop");
- }  ) 
+
     
     
-}
-
-
-=======
-
-
-
+    
 function roomSvgLoad() {
 
 
@@ -111,16 +77,46 @@ function roomSvgLoad() {
         
         if ("triggerClicked" in item) {
             item.triggerClicked = true;
+            countTriggers(item);
         }
         
-        console.log(item.triggerClicked);
+        if (item.Name === "Door") {
+            if(triggersFound === 10){
+                triggersFound = 0
+                for (i = 0; i<clickable.length; i++) {
+                    if ("triggerClicked" in clickable[i] && "alreadyClicked" in clickable[i]){
+                    clickable[i].triggerClicked = false;
+                    clickable[i].alreadyClicked = false;
+                    }
+                    else{}
+                }
+               loadNewRoom("livingRoom");
+            }
+        }
+        
+        console.log(triggersFound);
         startAnimating(fps, item);
+        
     })
 
 
 }
 
-
+function countTriggers(item) {
+    if (item.triggerClicked === true) {
+        if (item.alreadyClicked === false) {
+            triggersFound += 1;
+            item.alreadyClicked = true;
+             console.log($(clickable).length)
+        }
+        
+        else {
+            //do nothing
+        }
+    }
+    
+    return triggersFound;
+}
 
 var stop = false;
 var frameCount = 0;
@@ -140,7 +136,6 @@ function startAnimating(fps, item) {
     startTime = then;
     animate();
 }
->>>>>>> origin/master
 
 
 function animate() {

@@ -2,14 +2,10 @@
     font-family: "Lucida Sans", sans-serif; 
 }
 
-<<<<<<< HEAD
-=======
 b {
     color: red;
 }
 
-
->>>>>>> origin/master
 .bubble 
 {
 position: absolute;
@@ -18,45 +14,13 @@ max-width:250px;
 min-height:1.5em;
 padding: 20px;
 background: #FFFFFF;
-<<<<<<< HEAD
-=======
-    display: none;
->>>>>>> origin/master
+display: none;
 border: #7F7F7F solid 4px;
 -webkit-border-radius: 20px;
 -moz-border-radius: 20px;
 border-radius: 20px;
-<<<<<<< HEAD
 }
 
-.bubble:after 
-{
-content: "";
-position: absolute;
-bottom: -15px;
-left: 60%;
-border-style: solid;
-border-width: 15px 15px 0;
-border-color: #FFFFFF transparent;
-display: block;
-width: 0;
-z-index: 1;
-}
-
-.bubble:before 
-{
-content: "";
-position: absolute;
-bottom: -19.5px;
-left: calc(60% - 3px) ;
-border-style: solid;
-border-width: 18px 18px 0;
-border-color: #7F7F7F transparent;
-display: block;
-width: 0;
-z-index: 0;
-}
-=======
 }
 
 /*.bubble:after {
@@ -84,7 +48,6 @@ z-index: 0;
     width: 0;
     z-index: 0;
 }*/
->>>>>>> origin/master
 
 
 
@@ -97,10 +60,7 @@ z-index: 0;
     animation: thoughtPopKey 1s 1;
 }
 
-<<<<<<< HEAD
-=======
 svg {
     width: 100%;
 }
 
->>>>>>> origin/master
