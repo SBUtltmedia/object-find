@@ -88,14 +88,14 @@ function roomSvgLoad() {
         
         if (item.Name === "Door") {
             if(triggersFound >= 5){
-                triggersFound = 0
+                triggersFound = 0;
                 for (i = 0; i<clickable.length; i++) {
                     if ("triggerClicked" in clickable[i] && "alreadyClicked" in clickable[i]){
                     clickable[i].triggerClicked = false;
                     clickable[i].alreadyClicked = false;
                     }
                     else{}
-                }
+                };
                loadNewRoom("livingRoom");
             }
         }

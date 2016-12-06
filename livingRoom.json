@@ -1,36 +1,4 @@
 {
     "roomImage": "livingRoom.svg",
-    "targets":[
-        {
-            "Name": "Lamp",
-            "Text": "This is a ceiling lamp. It is <b>not</b> an asthma trigger."
-        }, {
-            "Name": "Lamp2",
-            "Text": "This is a table lamp. It is <b>not</b> an asthma trigger."
-        }, {
-            "Name": "Plant",
-            "Text": "This is a potted plant."
-        }, {
-            "Name": "Fireplace",
-            "Text": "This is a fireplace.",
-            "totalAnimationFrames": 3,
-            "loopAmount": 3,
-            "audioFIle": "Fire.mp3"
-        }, {
-            "Name": "Dog",
-            "Text": "This is a dog. He's a good boy.",
-            "totalAnimationFrames": 3,
-            "loopAmount": 3,
-            "audioFile": "Dog.mp3",
-        }, {
-            "Name": "Sneakers",
-            "Text": "These are running shoes. For running."
-        }, {
-            "Name": "Table",
-            "Text": "This is a table."
-        }, {
-            "Name": "Skateboard",
-            "Text": "This is a skateboard."
-        }
-    ]
+    "targets":[]
 }
