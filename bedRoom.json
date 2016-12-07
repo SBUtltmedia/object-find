@@ -4,50 +4,50 @@
         {
             "Name": "ceilingLight",
             "Text": "This is a ceiling lamp. It is <b>not</b> an asthma trigger.",
-            "xValue": 50,
-            "yValue": 50
+            "xValue": 45,
+            "yValue": 20
 }, {
             "Name": "Window1",
             "Text": "This is a window. It is <b>not</b> an asthma trigger.",
-            "xValue": 0,
-            "yValue": 0
+            "xValue": 25,
+            "yValue": 9
 }, {
             "Name": "Cat_1",
             "Text": "<b>Furry pets</b> can trigger an asthma attack. <ul><li>Keep furry pets out of bedrooms.</li><br /><li>Wash furry pets often.</li></ul>",
             "totalAnimationFrames": 3,
             "loopAmount": 3,
             "audioFile": "Cat.mp3",
-            "xValue": 0,
-            "yValue": 0,
+            "xValue": 28,
+            "yValue": 30,
             "triggerClicked": false,
             "alreadyClicked": false
 }, {
             "Name": "Bed",
             "Text": "Dust mites live in items made of thick fibers, such as <b>bedding</b>. <ul><li>Cover mattress, pillows, and all bedding with allergy-proof dust mite encasements.</li><br /><li>Wash and dry all bedding on high heat at least every two weeks</li><br /><li>Keep humidity level in home under 50%.</li></ul>",
             "audioFile": "Bedsheets.mp3",
-            "xValue": 0,
-            "yValue": 0,
+            "xValue": 45,
+            "yValue": 10,
             "triggerClicked": false,
             "alreadyClicked": false
     
 }, {
             "Name": "Dresser",
             "Text": "This is a dresser. It is <b>not</b> an asthma trigger. Keep looking!",
-            "xValue": 0,
-            "yValue": 0
+            "xValue": 70,
+            "yValue": 30
 }, {
             "Name": "Nightstand",
             "Text": "This is a nightstand. It is <b>not</b> an asthma trigger. Keep looking!",
-            "xValue": 0,
-            "yValue": 0
+            "xValue": 18,
+            "yValue": 30
 }, {
             "Name": "Dust_1",
             "Text": "<b>House dust</b> is a common trigger that may also contain tiny particles of <b>pollen, mold, cloth fibers,</b> and <b>detergents</b>.<ul><li>Central heating and A/C systems may help control dust, but be sure to change filters frequently.</li><br /><li>Wipe away dust with a damp cloth and vacuum once a week.</li><br /><li>Use furniture polish to help reduce dust and other allergens.</li></ul>",
             "totalAnimationFrames": 8,
             "loopAmount": 1,
             "frameRate": 3,
-            "xValue": 0,
-            "yValue": 0,
+            "xValue": 10,
+            "yValue": 10,
             "triggerClicked": false,
             "alreadyClicked": false
 }, {

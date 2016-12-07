@@ -13,8 +13,21 @@ var totalTriggers = 0;
 
 $(function(){
  loadNewRoom("bedRoom");
-   
+   $( window ).resize( function() {
+       
+        resizeScreen();
+  });
+            resizeScreen();
 });
+
+function resizeScreen(){
+    //console.log($("html").width())
+    $("html").css('fontSize',$("html").width()/100+"px");
+    
+    
+}
+
+
 function loadNewRoom(roomName)
     {
  $.getJSON(roomName+".json", function (data) {
@@ -41,15 +54,16 @@ function roomSvgLoad() {
         lookup[value.Name] = index;
     })
 
-    console.log("something")
     $(".clickable").click(function (evt) {
-        console.log($("svg").width(), $("svg").height());
+        var clickedItem = $(evt.target).closest('.clickable').attr("id");
+        var item = clickable[lookup[clickedItem]];
+        console.log(item)
         $("#thoughtBubble").removeClass("thoughtPop");
         setTimeout(function() {
             $("#thoughtBubble").addClass("thoughtPop");
             $("#thoughtBubble").css({
-                "left": evt.clientX + "px",
-                "top": evt.clientY + "px",
+                "left": item.xValue + "rem",
+                "top": item.yValue + "rem",
                 "display": "block"
             })
         }, 20);
@@ -68,14 +82,14 @@ function roomSvgLoad() {
         //$("#thoughtBubble").removeClass("thoughtPop");
         $("#thoughtBubble").css("display", "inline")
             //void element.offsetWidth;
-        var clickedItem = $(evt.target).closest('.clickable').attr("id");
-        console.log(clickedItem)
+      
+      
             //console.log(evt.clientX) 
         $("#thoughtBubble").html(clickable[lookup[clickedItem]].Text)
             // $("#thoughtBubble").addClass("thoughtPop");
-        var item = clickable[lookup[clickedItem]];
+
         var fps = item.frameRate || defaultFrameRate;
-        console.log(soundEffects, soundEffects[item.Name])
+       
 
         if ("audioFile" in item) {
             soundEffects[item.Name].playclip();

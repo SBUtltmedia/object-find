@@ -3,6 +3,11 @@
     
 }
 
+
+html {
+  font-size: 100%;
+}
+
 b {
     color: red;
 }
@@ -10,16 +15,17 @@ b {
 .bubble {
     position: absolute;
     display: inline-block;
-    max-width: 250px;
-    min-height: 1.5em;
-    padding: 20px;
+    max-width: 8.5rem;
+    min-height: 8rem;
+    padding: 1rem;
+    margin:1rem;
     background: #FFFFFF;
     display: none;
-    border: #7F7F7F solid 4px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
-    font-size: 12px;
+    border: #7F7F7F solid .7rem;
+    -webkit-border-radius: .9rem;
+    -moz-border-radius: .9rem;
+    border-radius: 1rem;
+    font-size: .8rem;
 }
 
 /*.bubble:after {

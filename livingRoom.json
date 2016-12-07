@@ -1,4 +1,14 @@
 {
     "roomImage": "livingRoom.svg",
-    "targets":[]
+    "targets":[{
+            "Name": "Plant",
+            "Text": "This is a ceiling lamp. It is <b>not</b> an asthma trigger.",
+            "xValue": 50,
+            "yValue": 50
+}, {
+            "Name": "Window",
+            "Text": "This is a window. It is <b>not</b> an asthma trigger.",
+            "xValue": 0,
+            "yValue": 0
+}]
 }
