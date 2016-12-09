@@ -35,7 +35,7 @@ function loadNewRoom(roomName)
         console.log(clickable);
         //$("#room").css("font-size", "100px");
         $("#roomSVG").load("img/" + data.roomImage, roomSvgLoad);
-    })      
+    })
     }
     
 

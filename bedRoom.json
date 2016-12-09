@@ -10,14 +10,14 @@
             "Name": "Window1",
             "Text": "This is a window. It is <b>not</b> an asthma trigger.",
             "xValue": 25,
-            "yValue": 9
+            "yValue": 15
 }, {
             "Name": "Cat_1",
             "Text": "<b>Furry pets</b> can trigger an asthma attack. <ul><li>Keep furry pets out of bedrooms.</li><br /><li>Wash furry pets often.</li></ul>",
             "totalAnimationFrames": 3,
             "loopAmount": 3,
             "audioFile": "Cat.mp3",
-            "xValue": 28,
+            "xValue": 25,
             "yValue": 30,
             "triggerClicked": false,
             "alreadyClicked": false
@@ -26,7 +26,7 @@
             "Text": "Dust mites live in items made of thick fibers, such as <b>bedding</b>. <ul><li>Cover mattress, pillows, and all bedding with allergy-proof dust mite encasements.</li><br /><li>Wash and dry all bedding on high heat at least every two weeks</li><br /><li>Keep humidity level in home under 50%.</li></ul>",
             "audioFile": "Bedsheets.mp3",
             "xValue": 45,
-            "yValue": 10,
+            "yValue": 20,
             "triggerClicked": false,
             "alreadyClicked": false
     
@@ -34,19 +34,19 @@
             "Name": "Dresser",
             "Text": "This is a dresser. It is <b>not</b> an asthma trigger. Keep looking!",
             "xValue": 70,
-            "yValue": 30
+            "yValue": 50
 }, {
             "Name": "Nightstand",
             "Text": "This is a nightstand. It is <b>not</b> an asthma trigger. Keep looking!",
-            "xValue": 18,
-            "yValue": 30
+            "xValue": 15,
+            "yValue": 40
 }, {
             "Name": "Dust_1",
             "Text": "<b>House dust</b> is a common trigger that may also contain tiny particles of <b>pollen, mold, cloth fibers,</b> and <b>detergents</b>.<ul><li>Central heating and A/C systems may help control dust, but be sure to change filters frequently.</li><br /><li>Wipe away dust with a damp cloth and vacuum once a week.</li><br /><li>Use furniture polish to help reduce dust and other allergens.</li></ul>",
             "totalAnimationFrames": 8,
             "loopAmount": 1,
             "frameRate": 3,
-            "xValue": 10,
+            "xValue": 30,
             "yValue": 10,
             "triggerClicked": false,
             "alreadyClicked": false
@@ -54,24 +54,24 @@
             "Name": "Frog",
             "Text": "Dust mites live in items made of thick fibers, such as <b>stuffed toys</b>. <ul><li>Stuffed toys are a source for dust mites.</li><br /><li>Reduce or remove stuffed toys from the child's bedroom.</li></ul>",
             "audioFile": "Frog.mp3",
-            "xValue": 0,
-            "yValue": 0,
+            "xValue": 30,
+            "yValue": 40,
             "triggerClicked": false,
             "alreadyClicked": false
 }, {
             "Name": "Bunny",
             "Text": "Dust mites live in items made of thick fibers, such as <b>stuffed toys</b>. <ul><li>Stuffed toys are a source for dust mites.</li><br /><li>Reduce or remove stuffed toys from the child's bedroom.</li></ul>",
             "audioFile": "Squeak.mp3",
-            "xValue": 0,
-            "yValue": 0,
+            "xValue": 46,
+            "yValue": 40,
             "triggerClicked": false,
             "alreadyClicked": false
 }, {
             "Name": "Bear",
             "Text": "Dust mites live in items made of thick fibers, such as <b>stuffed toys</b>. <ul><li>Stuffed toys are a source for dust mites.</li><br /><li>Reduce or remove stuffed toys from the child's bedroom.</li></ul>",
             "audioFile": "Squeak2.mp3",
-            "xValue": 0,
-            "yValue": 0,
+            "xValue": 51,
+            "yValue": 40,
             "triggerClicked": false,
             "alreadyClicked": false
 }, {
@@ -81,13 +81,12 @@
             "loopAmount": 3,
             "frameRate": 10,
             "audioFile": "Spray.mp3",
-            "xValue": 0,
-            "yValue": 0,
+            "xValue": 67,
+            "yValue": 29,
             "triggerClicked": false,
             "alreadyClicked": false
 }, {
-            "Name": "Door",
-            "Text": "<b>Note:</b> This will lead back to the rest of the house."
+            "Name": "Door"
 }, {
             "Name": "Curtains_1",
             "Text": "Pay attention to <b>pollen</b> levels. <ul><li>Keep windows closed in the child's bedroom.</li><br /><li>Use window filters, air conditioning, and air purifiers to filter out pollen airborne in the home.</li></ul>",
@@ -95,44 +94,44 @@
             "loopAmount": 10, 
             "frameRate": 5,
             "audioFile": "Outside.mp3",
-            "xValue": 0,
-            "yValue": 0,
+            "xValue": 25,
+            "yValue": 20,
             "triggerClicked": false,
             "alreadyClicked": false
 }, {
             "Name": "Carpet",
             "Text": "Dust mites live in items made of thick fibers, such as <b>carpets</b> or <b>rugs</b>. <ul><li>Avoid use of or remove all carpeting in the home.</li><br /><li>Replace carpeting with flooring that can be <b>damp mopped often</b>.</li><br /><li>If you must retain the carpet, use a vacuum cleaner with a high efficiency filter or a central vacuum cleaner.</li></ul>",
-            "xValue": 0,
-            "yValue": 0,
+            "xValue": 25,
+            "yValue": 39,
             "triggerClicked": false,
             "alreadyClicked": false
 }, {
             "Name": "Ledge",
             "Text": "This is the window sill. It is <b>not</b> an asthma trigger, but you're getting warmer!",
-            "xValue": 0,
-            "yValue": 0
+            "xValue": 1,
+            "yValue": 35
 }, {
             "Name": "Clock",
             "Text": "This is an alarm clock. It is <b>not</b> an asthma trigger. You're getting warmer, though!",
-            "xValue": 0,
-            "yValue": 0
+            "xValue": 35,
+            "yValue": 32
 }, {
             "Name": "Books",
             "Text": "<b>House dust</b> is a common trigger that may also contain tiny particles of <b>pollen, mold, cloth fibers,</b> and <b>detergents</b>.<ul><li>Dust <b>collects</b> on surfaces and items such as books. Minimize clutter.</li><br /><li>Wipe away dust with a damp cloth and vacuum once a week.</li><br /><li>Use furniture polish to help reduce dust and other allergens.</li></ul>",
-            "xValue": 0,
-            "yValue": 0,
+            "xValue": 35,
+            "yValue": 30,
             "triggerClicked": false,
             "alreadyClicked": false
 }, {
             "Name": "Mirror",
             "Text": "This is a mirror. It is <b>not</b> an asthma trigger. Keep looking!",
-            "xValue": 0,
-            "yValue": 0
+            "xValue": 72,
+            "yValue": 12
 }, {
             "Name": "Hairbrush",
             "Text": "This is a brush. It is <b>not</b> an asthma trigger. You're getting warmer, though!",
-            "xValue": 0,
-            "yValue": 0
+            "xValue": 72,
+            "yValue": 35
 }
 
 ]
