@@ -4,12 +4,16 @@
             "Name": "Plant",
             "Text": "<b>Plants</b> can grow mold in the soil. <ul><li>Molds are microscopic fungi that live on plant and animal matter.</li><br /><li>Molds can be found almost anywhere moisture is present, such as in plant soil.</li></ul>If <b>mold</b> is a problem in the home, clean up the mold and eliminate the source.<ul><li>Maintain low indoor humidity, ideally between 30-50% relative humidity.</li><br /><li>Humidity levels can be measured by hygrometers, which are available at local hardware stores.</li>",
             "xValue": 50,
-            "yValue": 50
+            "yValue": 50, 
+            "triggerClicked": false,
+            "alreadyClicked": false
 }, {
             "Name": "Window",
             "Text": "This is a window. It is <b>not</b> an asthma trigger.",
             "xValue": 0,
-            "yValue": 0
+            "yValue": 0,
+            "triggerClicked": false,
+            "alreadyClicked": false
 }, {
             "Name": "Girl",
             "Text": "This is a girl. She is not an asthma trigger.",
@@ -19,26 +23,38 @@
             "Name": "Man",
             "Text": "<b>Tobacco smoke</b> is unhealthy for everyone, especially people with asthma. <br /><ul><li>Keep a strict smoke-free environment at all times</li></ul><br /><b>Second-hand smoke</b> is smoke created by a smoker and breathed in by a second person. Second-hand smoke can trigger an asthma-attack. <ul><li>A person with asthma needs to avoid being near anyone who is smoking.</li><br /><li><b>No smoking</b> indoors, in homes, cars, or wherever the person with asthma may spend time.</li><br /></ul><b>Third-hand smoke</b> is residual tobacco smoke contamination that remains <b>after</b> the cigarette is extinguished. This residue can linger in the air and on the clothes of the person, and on surfaces of the area the smoker has frequented.<ul><li>Always smoke <b>outside</b> far away from the home, car, etc.</li><br /><li>Use cover up clothing, pull back hair, and wear a hat while smoking outdoors</li><br /><li>Leave smoke-contaminated clothing outside of the home.</li><br /><li>Change clothes, wash hands and face, and rinse mouth after smoking.</li>",
             "xValue": 30,
-            "yValue": 30
+            "yValue": 30,
+            "triggerClicked": false,
+            "alreadyClicked": false
 }, {
             "Name": "Window",
             "Text": "Pay attention to <b>pollen</b> levels. <ul><li>Keep windows closed in the child's bedroom.</li><br /><li>Use window filters, air conditioning, and air purifiers to filter out pollen airborne in the home.</li></ul>",
             "xValue": 30,
-            "yValue": 30
+            "yValue": 30,
+            "triggerClicked": false,
+            "alreadyClicked": false
     
 }, {
             "Name": "Dog",
             "Text": "<b>Furry pets</b> can trigger an asthma attack. <ul><li>Keep furry pets out of bedrooms.</li><br /><li>Wash furry pets often.</li></ul>",
             "xValue": 30,
-            "yValue": 30
+            "yValue": 30,
+            "triggerClicked": false,
+            "alreadyClicked": false
 }, {
             "Name": "Couch",
             "Text": "Dust mites live in items made of thick fibers, such as <b>upholstered furniture</b>. <ul><li>Cover couch cushions, pillows, and all upholstery with allergy-proof dust mite encasements.</li><br /><li>Wash and dry all bedding on high heat at least every two weeks</li><br /><li>Keep humidity level in home under 50%.</li></ul>",
             "xValue": 30,
-            "yValue": 30
+            "yValue": 30,
+            "triggerClicked": false,
+            "alreadyClicked": false
 }, {
             "Name": "Fireplace",
-            "Text": "<b>Wood fireplaces</b> and <b>wood burning stoves</b> produce wood smoke and air pollution, which can be triggers for asthma in some people. The smoke can be an inhaled irritant--if you can smell smoke, you are breathing smoke. <ul><li>Avoid using a wood fireplace or wood burning stove indoors. Look into cleaner heating appliances.</li></ul>If you must have a fireplace or wood burning stove indoors, avoid <b>wood smoke</b> and particulate emissions pollution.<ul><li>Make sure your stove or fireplace doesn't leak wood smoke.</li><br /><li>Only burn clean, dry wood. Other materials can produce smoke and fumes that may be toxic.</li><br /><li>Consider the use of pellet stoves. According to the EPA, they are the least polluting.</li><br /><li> Ensure professional cleaning and inspection of fireplace, chimney, and wood burning stoves are done annually or more often.</li><br /><li>Operate the system according to the manufacturer's instructions.</li><br /><li>Refer to the EPA website for more information on how to avoid wood burning indoor air pollution</li></ul>"
+            "Text": "<b>Wood fireplaces</b> and <b>wood burning stoves</b> produce wood smoke and air pollution, which can be triggers for asthma in some people. The smoke can be an inhaled irritant--if you can smell smoke, you are breathing smoke. <ul><li>Avoid using a wood fireplace or wood burning stove indoors. Look into cleaner heating appliances.</li></ul>If you must have a fireplace or wood burning stove indoors, avoid <b>wood smoke</b> and particulate emissions pollution.<ul><li>Make sure your stove or fireplace doesn't leak wood smoke.</li><br /><li>Only burn clean, dry wood. Other materials can produce smoke and fumes that may be toxic.</li><br /><li>Consider the use of pellet stoves. According to the EPA, they are the least polluting.</li><br /><li> Ensure professional cleaning and inspection of fireplace, chimney, and wood burning stoves are done annually or more often.</li><br /><li>Operate the system according to the manufacturer's instructions.</li><br /><li>Refer to the EPA website for more information on how to avoid wood burning indoor air pollution</li></ul>",
+            "triggerClicked": false,
+            "alreadyClicked": false
             
+}, {
+            "Name": "Door"
 }]
 }

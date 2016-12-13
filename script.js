@@ -1,153 +1,114 @@
 var clickable;
-
 var defaultFrameRate = 5
 var lookup = {};
 var animationItem;
 var animationFrame;
 var soundEffects = {};
-var animatingList =[];
+var animatingList = [];
 var isAnimating;
-var triggersFound = 0;
-var totalTriggers = 0;
+var triggersFound;
+var totalTriggers;
+var stop = false;
+var frameCount = 0;
+var fps, fpsInterval, startTime, now, then, elapsed;
+$(window).resize(function () {
+    resizeScreen();
+});
+$(function () {
+    loadNewRoom("bedRoom");
 
-
-$(function(){
- loadNewRoom("bedRoom");
-   $( window ).resize( function() {
-       
-        resizeScreen();
-  });
-            resizeScreen();
 });
 
-function resizeScreen(){
+function resizeScreen() {
     //console.log($("html").width())
-    $("html").css('fontSize',$("html").width()/100+"px");
-    
-    
+    $("html").css('fontSize', $("html").width() / 100 + "px");
 }
 
-
-function loadNewRoom(roomName)
-    {
- $.getJSON(roomName+".json", function (data) {
+function loadNewRoom(roomName) {
+    triggersFound = 0;
+    totalTriggers = 0;
+    $.getJSON(roomName + ".json", function (data) {
         clickable = data.targets;
         console.log(clickable);
         //$("#room").css("font-size", "100px");
         $("#roomSVG").load("img/" + data.roomImage, roomSvgLoad);
+        resizeScreen();
     })
-    }
-    
+}
 
-    
-    
-    
 function roomSvgLoad() {
-
-
     $(clickable).each(function (index, value) {
         if ("audioFile" in value) {
             soundEffects[value.Name] = ss_soundbits("audio/" + value.audioFile);
         }
-        console.log($(value))
+        if ("isTrigger" in value) {
+            totalTriggers++;
+            value.unClicked = true;
+        }
+        displayTriggersLeft();
         $("#" + value.Name).addClass("clickable")
         lookup[value.Name] = index;
     })
-
     $(".clickable").click(function (evt) {
         var clickedItem = $(evt.target).closest('.clickable').attr("id");
         var item = clickable[lookup[clickedItem]];
-        console.log(item)
+        var alreadyClickedText = ""
+        if (item.unClicked == false) {
+            var alreadyClickedText = " <em>(You found this trigger already!)</em>"
+        }
         $("#thoughtBubble").removeClass("thoughtPop");
-        setTimeout(function() {
-            $("#thoughtBubble").addClass("thoughtPop");
+        setTimeout(function () {
             $("#thoughtBubble").css({
-                "left": item.xValue + "rem",
-                "top": item.yValue + "rem",
-                "display": "block"
-            })
+                "left": item.xValue + "rem"
+                , "top": item.yValue + "rem"
+            });
+            $("#thoughtBubble").addClass("thoughtPop");
+            $("#thoughtBubble").css("display", "inline");
+            $("#thoughtBubble").html(item.Text + alreadyClickedText)
         }, 20);
-        
-            //element = document.getElementById("thoughtBubble");
-            //element.css()
-
-
-//        $("#thoughtBubble").removeClass("thoughtPop").animate({
-//            'nothing': null
-//        }, 1, function () {
-//            $(this).addClass("thoughtPop");
-//        });
-        
-
+        //element = document.getElementById("thoughtBubble");
+        //element.css()
+        //        $("#thoughtBubble").removeClass("thoughtPop").animate({
+        //            'nothing': null
+        //        }, 1, function () {
+        //            $(this).addClass("thoughtPop");
+        //        });
         //$("#thoughtBubble").removeClass("thoughtPop");
-        $("#thoughtBubble").css("display", "inline")
-            //void element.offsetWidth;
-      
-      
-            //console.log(evt.clientX) 
-        $("#thoughtBubble").html(clickable[lookup[clickedItem]].Text)
-            // $("#thoughtBubble").addClass("thoughtPop");
-
+        //void element.offsetWidth;
+        //console.log(evt.clientX) 
+        // $("#thoughtBubble").addClass("thoughtPop");
         var fps = item.frameRate || defaultFrameRate;
-       
-
         if ("audioFile" in item) {
             soundEffects[item.Name].playclip();
         }
-        
-        if ("triggerClicked" in item) {
-            item.triggerClicked = true;
-            countTriggers(item);
+        if ("isTrigger" in item) {
+            if (item.unClicked) {
+                countTriggers(item);
+            }
+           
         }
-        
         if (item.Name === "Door") {
-            if(triggersFound >= 5){
-                triggersFound = 0;
-                for (i = 0; i<clickable.length; i++) {
-                    if ("triggerClicked" in clickable[i] && "alreadyClicked" in clickable[i]){
-                    clickable[i].triggerClicked = false;
-                    clickable[i].alreadyClicked = false;
-                    }
-                    else{}
-                };
-               loadNewRoom("livingRoom");
+            if (triggersFound >= 5) {
+                loadNewRoom("livingRoom");
+                
             }
         }
-        
-        console.log(triggersFound);
         startAnimating(fps, item);
-        
     })
-
-
 }
 
 function countTriggers(item) {
-    if (item.triggerClicked === true) {
-        if (item.alreadyClicked === false) {
-            triggersFound += 1;
-            item.alreadyClicked = true;
-             console.log($(clickable).length)
-        }
-        
-        else {
-            //do nothing
-        }
-    }
-    
-    return triggersFound;
+    triggersFound += 1;
+    item.unClicked = false;
+    displayTriggersLeft();
 }
 
-var stop = false;
-var frameCount = 0;
-var $results = $("#results");
-var fps, fpsInterval, startTime, now, then, elapsed;
-
-
+function displayTriggersLeft() {
+    var triggersLeft = totalTriggers - triggersFound;
+    $('#triggersLeft').html(triggersLeft);
+}
 // initialize the timer variables and start the animation
-
 function startAnimating(fps, item) {
-
     animationItem = item;
     animationItem.animationFrame = 1;
     animatingList.push(animationItem)
@@ -157,67 +118,32 @@ function startAnimating(fps, item) {
     animate();
 }
 
-
 function animate() {
-
     // request another frame
-
-    isAnimating= requestAnimationFrame(animate);
-
+    isAnimating = requestAnimationFrame(animate);
     // calc elapsed time since last loop
-
     now = Date.now();
     elapsed = now - then;
-
     // if enough time has elapsed, draw the next frame
-
     if (elapsed > fpsInterval) {
         then = now - (elapsed % fpsInterval);
-        animatingList.forEach(function(item,index){
-        //console.log(item)
-        var itemID = item.Name.split("_")[0] + "_";
-        var selector = "#" + itemID;
-        $("[id^='" + itemID + "']").attr("style", "display:none")
-
-        if (item.animationFrame < animationItem.totalAnimationFrames * animationItem.loopAmount) {
-
-
-            //var displayFrame = (animationFrame % animationItem.totalAnimationFrames) + 1
-            var y = item.totalAnimationFrames
-            var displayFrame = Math.abs((item.animationFrame + y - 2) % ((y - 1) * 2) - (y - 1)) + 1
-            console.log(displayFrame, item.animationFrame, item.totalAnimationFrames)
-            $(selector + displayFrame).attr("style", "display:inline")
-            item.animationFrame++
-        } else {
-            delete  animatingList[index]
-            $(selector + 1).attr("style", "display:inline")
-        }
-    });
-
-
-
-    //            // Get ready for next frame by setting then=now, but also adjust for your
-    //            // specified fpsInterval not being a multiple of RAF's interval (16.7ms)
-    //        then = now - (elapsed % fpsInterval);
-    //        if (animationFrame < animationItem.totalAnimationFrames) {
-    //
-    //
-    //    animationFrame++
-    //          
-    //            console.log(animationFrame, animationItem.totalAnimationFrames)
-    //             $( selector + animationFrame ).attr("style","display:inline")
-    //           
-    //            // Put your drawing code here
-    //        } else if (loopCount < animationItem.loopAmount) {
-    //            animationFrame = 0;
-    //        
-    //            loopCount++;
-    //
-    //        } else {
-    //            //   $( selector + 1 ).css("display","inline")
-    //        }
-    //
-    //
-    //
-
-}}
+        animatingList.forEach(function (item, index) {
+            //console.log(item)
+            var itemID = item.Name.split("_")[0] + "_";
+            var selector = "#" + itemID;
+            $("[id^='" + itemID + "']").attr("style", "display:none")
+            if (item.animationFrame < animationItem.totalAnimationFrames * animationItem.loopAmount) {
+                //var displayFrame = (animationFrame % animationItem.totalAnimationFrames) + 1
+                var y = item.totalAnimationFrames
+                var displayFrame = Math.abs((item.animationFrame + y - 2) % ((y - 1) * 2) - (y - 1)) + 1
+                console.log(displayFrame, item.animationFrame, item.totalAnimationFrames)
+                $(selector + displayFrame).attr("style", "display:inline")
+                item.animationFrame++
+            }
+            else {
+                delete animatingList[index]
+                $(selector + 1).attr("style", "display:inline")
+            }
+        });
+    }
+}

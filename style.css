@@ -14,7 +14,7 @@ b {
 
 .bubble {
     position: absolute;
-    display: inline-block;
+
     /*max-width: 11rem;
     min-height: 1rem;*/
     padding: 1rem;
@@ -70,6 +70,18 @@ b {
     animation-fill-mode: forwards;
     animation-delay: 0s;
 }
-svg {
+#roomSVG {
     width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#triggersLeft {
+    position: absolute;
+    top:2rem;
+    left:2rem;
+    font-family: "Lucida Sans", sans-serif;
+    font-size: 6rem;
+    color: red;
 }
