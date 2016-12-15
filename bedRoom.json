@@ -23,7 +23,7 @@
            
 }, {
             "Name": "Bed",
-            "Text": "Dust mites live in items made of thick fibers, such as <b>bedding</b>. <ul><li>Cover mattress, pillows, and all bedding with allergy-proof dust mite encasements.</li><br /><li>Wash and dry all bedding on high heat at least every two weeks</li><br /><li>Keep humidity level in home under 50%.</li></ul>",
+            "Text": "<b>Dust mites</b> live in items made of thick fibers, such as <b>bedding</b>. <ul><li>Cover mattress, pillows, and all bedding with allergy-proof dust mite encasements.</li><br /><li>Wash and dry all bedding on high heat at least every two weeks</li><br /><li>Keep humidity level in home under 50%.</li></ul>",
             "audioFile": "Bedsheets.mp3",
             "xValue": 45,
             "yValue": 20,
@@ -52,7 +52,7 @@
            
 }, {
             "Name": "Frog",
-            "Text": "Dust mites live in items made of thick fibers, such as <b>stuffed toys</b>. <ul><li>Stuffed toys are a source for dust mites.</li><br /><li>Reduce or remove stuffed toys from the child's bedroom.</li></ul>",
+            "Text": "<b>Dust mites</b> live in items made of thick fibers, such as <b>stuffed toys</b>. <ul><li>Stuffed toys are a source for dust mites.</li><br /><li>Reduce or remove stuffed toys from the child's bedroom.</li></ul>",
             "audioFile": "Frog.mp3",
             "xValue": 30,
             "yValue": 40,
@@ -60,7 +60,7 @@
            
 }, {
             "Name": "Bunny",
-            "Text": "Dust mites live in items made of thick fibers, such as <b>stuffed toys</b>. <ul><li>Stuffed toys are a source for dust mites.</li><br /><li>Reduce or remove stuffed toys from the child's bedroom.</li></ul>",
+            "Text": "<b>Dust mites</b> live in items made of thick fibers, such as <b>stuffed toys</b>. <ul><li>Stuffed toys are a source for dust mites.</li><br /><li>Reduce or remove stuffed toys from the child's bedroom.</li></ul>",
             "audioFile": "Squeak.mp3",
             "xValue": 46,
             "yValue": 40,
@@ -68,7 +68,7 @@
            
 }, {
             "Name": "Bear",
-            "Text": "Dust mites live in items made of thick fibers, such as <b>stuffed toys</b>. <ul><li>Stuffed toys are a source for dust mites.</li><br /><li>Reduce or remove stuffed toys from the child's bedroom.</li></ul>",
+            "Text": "<b>Dust mites</b> live in items made of thick fibers, such as <b>stuffed toys</b>. <ul><li>Stuffed toys are a source for dust mites.</li><br /><li>Reduce or remove stuffed toys from the child's bedroom.</li></ul>",
             "audioFile": "Squeak2.mp3",
             "xValue": 51,
             "yValue": 40,
@@ -100,7 +100,7 @@
            
 }, {
             "Name": "Carpet",
-            "Text": "Dust mites live in items made of thick fibers, such as <b>carpets</b> or <b>rugs</b>. <ul><li>Avoid use of or remove all carpeting in the home.</li><br /><li>Replace carpeting with flooring that can be <b>damp mopped often</b>.</li><br /><li>If you must retain the carpet, use a vacuum cleaner with a high efficiency filter or a central vacuum cleaner.</li></ul>",
+            "Text": "<b>Dust mites</b> live in items made of thick fibers, such as <b>carpets</b> or <b>rugs</b>. <ul><li>Avoid use of or remove all carpeting in the home.</li><br /><li>Replace carpeting with flooring that can be <b>damp mopped often</b>.</li><br /><li>If you must retain the carpet, use a vacuum cleaner with a high efficiency filter or a central vacuum cleaner.</li></ul>",
             "xValue": 25,
             "yValue": 39,
             "isTrigger": true

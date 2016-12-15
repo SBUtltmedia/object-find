@@ -85,3 +85,10 @@ b {
     font-size: 6rem;
     color: red;
 }
+
+#close {
+    float: right;
+    display: inline-block;
+    padding: 2px 5px;
+    background: #ccc;
+}

@@ -54,9 +54,10 @@ function roomSvgLoad() {
         var item = clickable[lookup[clickedItem]];
         var alreadyClickedText = ""
         if (item.unClicked == false) {
-            var alreadyClickedText = " <em>(You found this trigger already!)</em>"
+            alreadyClickedText = " <em>(You found this trigger already!)</em>"
         }
         $("#thoughtBubble").removeClass("thoughtPop");
+        //$("#thoughtBubble").css("display: block");
         setTimeout(function () {
             $("#thoughtBubble").css({
                 "left": item.xValue + "rem"
@@ -64,8 +65,12 @@ function roomSvgLoad() {
             });
             $("#thoughtBubble").addClass("thoughtPop");
             $("#thoughtBubble").css("display", "inline");
-            $("#thoughtBubble").html(item.Text + alreadyClickedText)
+            $("#thoughtBubble p").html(item.Text + alreadyClickedText)
         }, 20);
+        
+        //$("#close").click(function(evt) {
+        //    $("#thoughtBubble").css("display: none");
+        //})
         //element = document.getElementById("thoughtBubble");
         //element.css()
         //        $("#thoughtBubble").removeClass("thoughtPop").animate({
@@ -94,7 +99,8 @@ function roomSvgLoad() {
             }
         }
         startAnimating(fps, item);
-    })
+    });
+    
 }
 
 function countTriggers(item) {
