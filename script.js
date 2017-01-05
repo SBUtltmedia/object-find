@@ -67,9 +67,11 @@ function roomSvgLoad() {
             $("#thoughtBubble").css("display", "inline");
             $("#thoughtBubble p").html(item.Text + alreadyClickedText)
         }, 20);
-        
-        //$("#close").click(function(evt) {
-        //    $("#thoughtBubble").css("display: none");
+
+      $("#close").click(function(evt) {
+        console.log("mems");
+         $("#thoughtBubble").css({"display": "none"});
+            // $("#thoughtBubble").css("display", "inline");
         //})
         //element = document.getElementById("thoughtBubble");
         //element.css()
@@ -77,10 +79,10 @@ function roomSvgLoad() {
         //            'nothing': null
         //        }, 1, function () {
         //            $(this).addClass("thoughtPop");
-        //        });
+      });
         //$("#thoughtBubble").removeClass("thoughtPop");
         //void element.offsetWidth;
-        //console.log(evt.clientX) 
+        //console.log(evt.clientX)
         // $("#thoughtBubble").addClass("thoughtPop");
         var fps = item.frameRate || defaultFrameRate;
         if ("audioFile" in item) {
@@ -90,17 +92,17 @@ function roomSvgLoad() {
             if (item.unClicked) {
                 countTriggers(item);
             }
-           
+
         }
         if (item.Name === "Door") {
             if (triggersFound >= 5) {
                 loadNewRoom("livingRoom");
-                
+
             }
         }
         startAnimating(fps, item);
     });
-    
+
 }
 
 function countTriggers(item) {
