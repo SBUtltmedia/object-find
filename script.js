@@ -15,7 +15,7 @@ $(window).resize(function () {
     resizeScreen();
 });
 $(function () {
-    loadNewRoom("bedRoom");
+    loadNewRoom("bathRoom");
 
 });
 
