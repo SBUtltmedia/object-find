@@ -51,6 +51,8 @@
             "isTrigger": true
 
 }, {
+            "Name": "Door"
+}, {
             "Name": "Febreze",
             "Text": "Other Chemicals like <b>Febreze</b> air cleaners can actually trigger reactions as well.",
             "xValue": 18,
