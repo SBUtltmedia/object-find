@@ -8,14 +8,16 @@ var animatingList = [];
 var isAnimating;
 var triggersFound;
 var totalTriggers;
+var triggersLeft;
 var stop = false;
 var frameCount = 0;
+var nextRoom;
 var fps, fpsInterval, startTime, now, then, elapsed;
 $(window).resize(function () {
     resizeScreen();
 });
 $(function () {
-    loadNewRoom("bathRoom");
+    loadNewRoom("bedRoom");
 
 });
 
@@ -25,9 +27,11 @@ function resizeScreen() {
 }
 
 function loadNewRoom(roomName) {
-    triggersFound = 0;
     totalTriggers = 0;
     $.getJSON(roomName + ".json", function (data) {
+        console.log(data);
+        nextRoom = data.nextRoom;
+        console.log(nextRoom);
         clickable = data.targets;
         console.log(clickable);
         //$("#room").css("font-size", "100px");
@@ -45,13 +49,27 @@ function roomSvgLoad() {
             totalTriggers++;
             value.unClicked = true;
         }
+            triggersLeft = totalTriggers;
         displayTriggersLeft();
+
         $("#" + value.Name).addClass("clickable")
         lookup[value.Name] = index;
+
+        console.log(triggersLeft);
     })
     $(".clickable").click(function (evt) {
         var clickedItem = $(evt.target).closest('.clickable').attr("id");
         var item = clickable[lookup[clickedItem]];
+        console.log(clickedItem);
+        if (clickedItem == "Door"){
+
+          if (triggersLeft == 0){
+                loadNewRoom(nextRoom);
+
+          }
+
+
+        }
         var alreadyClickedText = ""
         if (item.unClicked == false) {
             alreadyClickedText = " <em>(You found this trigger already!)</em>"
@@ -94,25 +112,20 @@ function roomSvgLoad() {
             }
 
         }
-        if (item.Name === "Door") {
-            if (triggersFound >= 5) {
-                loadNewRoom("livingRoom");
 
-            }
-        }
         startAnimating(fps, item);
     });
 
 }
 
 function countTriggers(item) {
-    triggersFound += 1;
+    triggersLeft--;
     item.unClicked = false;
     displayTriggersLeft();
 }
 
 function displayTriggersLeft() {
-    var triggersLeft = totalTriggers - triggersFound;
+
     $('#triggersLeft').html(triggersLeft);
 }
 // initialize the timer variables and start the animation
