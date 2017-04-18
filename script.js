@@ -17,6 +17,13 @@ $(window).resize(function () {
     resizeScreen();
 });
 $(function () {
+    $.get("opening.txt", function (data){
+      var item ={}
+      item.Text=data;
+      item.xValue=5
+      item.yValue=10
+      thoughts(item);
+    })
     loadNewRoom("bedRoom");
 
 });
@@ -57,65 +64,75 @@ function roomSvgLoad() {
 
         console.log(triggersLeft);
     })
-    $(".clickable").click(function (evt) {
-        var clickedItem = $(evt.target).closest('.clickable').attr("id");
-        var item = clickable[lookup[clickedItem]];
-        console.log(clickedItem);
-        if (clickedItem == "Door"){
+makeClickEvents();
+}
 
-          if (triggersLeft == 0){
-                loadNewRoom(nextRoom);
+function makeClickEvents(){
 
-          }
+  $(".clickable").click(function (evt) {
+    console.log(evt.currentTarget)
+      var clickedItem =   evt.currentTarget.id// $(evt.target).closest('.clickable').attr("id");
+    itemClicked(clickedItem)
+});
+}
+
+function itemClicked(clickedItem){
+  var item = clickable[lookup[clickedItem]];
+  console.log(clickedItem);
+  if (clickedItem == "Door"){
+
+    if (triggersLeft == 0){
+          loadNewRoom(nextRoom);
+          return;
+    }
 
 
-        }
-        var alreadyClickedText = ""
-        if (item.unClicked == false) {
-            alreadyClickedText = " <em>(You found this trigger already!)</em>"
-        }
-        $("#thoughtBubble").removeClass("thoughtPop");
-        //$("#thoughtBubble").css("display: block");
-        setTimeout(function () {
-            $("#thoughtBubble").css({
-                "left": item.xValue + "rem"
-                , "top": item.yValue + "rem"
-            });
-            $("#thoughtBubble").addClass("thoughtPop");
-            $("#thoughtBubble").css("display", "inline");
-            $("#thoughtBubble p").html(item.Text + alreadyClickedText)
-        }, 20);
 
-      $("#close").click(function(evt) {
-        console.log("mems");
-         $("#thoughtBubble").css({"display": "none"});
-            // $("#thoughtBubble").css("display", "inline");
-        //})
-        //element = document.getElementById("thoughtBubble");
-        //element.css()
-        //        $("#thoughtBubble").removeClass("thoughtPop").animate({
-        //            'nothing': null
-        //        }, 1, function () {
-        //            $(this).addClass("thoughtPop");
+  }
+  thoughts(item);
+
+  var fps = item.frameRate || defaultFrameRate;
+  if ("audioFile" in item) {
+      soundEffects[item.Name].playclip();
+  }
+  if ("isTrigger" in item) {
+      if (item.unClicked) {
+          countTriggers(item);
+      }
+
+  }
+
+  startAnimating(fps, item);
+};
+
+
+
+
+
+
+function thoughts(it) {
+  $("#thoughtBubble").removeClass("thoughtPop");
+  //$("#thoughtBubble").css("display: block");
+  setTimeout(function () {
+      $("#thoughtBubble").css({
+          "left": it.xValue + "rem"
+          , "top": it.yValue + "rem"
       });
-        //$("#thoughtBubble").removeClass("thoughtPop");
-        //void element.offsetWidth;
-        //console.log(evt.clientX)
-        // $("#thoughtBubble").addClass("thoughtPop");
-        var fps = item.frameRate || defaultFrameRate;
-        if ("audioFile" in item) {
-            soundEffects[item.Name].playclip();
-        }
-        if ("isTrigger" in item) {
-            if (item.unClicked) {
-                countTriggers(item);
-            }
+      $("#thoughtBubble").addClass("thoughtPop");
+      $("#thoughtBubble").css("display", "inline");
+      $("#thoughtBubble p").html(it.Text + alreadyClickedText)
+  }, 20);
 
-        }
+  var alreadyClickedText = ""
+  if (it.unClicked == false) {
+      alreadyClickedText = " <em>(You found this trigger already!)</em>"
+  }
 
-        startAnimating(fps, item);
-    });
+$("#close").click(function(evt) {
 
+   $("#thoughtBubble").css({"display": "none"});
+
+});
 }
 
 function countTriggers(item) {

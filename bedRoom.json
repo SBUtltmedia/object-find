@@ -3,7 +3,7 @@
 	"nextRoom": "livingRoom",
 	"targets": [{
 			"Name": "ceilingLight",
-			"Text": "This is a ceiling lamp. It is <b>not</b> an asthma trigger.",
+			"Text": "<b>House dust</b> is a common allergy trigger and can cause symptoms to flare for some people with asthma. House dust contains many tiny particles, some of which can be from <b>pollen, mold, pet dander & hair, dust mites, and pests. Vacuum cleaners</b> contain dust particles and can be a source of home contamination with the dust.  ",
 			"xValue": 45,
 			"yValue": 20
 		}, {
@@ -17,7 +17,7 @@
 			"totalAnimationFrames": 3,
 			"loopAmount": 3,
 			"audioFile": "Cat.mp3",
-			"xValue": 25,
+			"xValue": 50,
 			"yValue": 30,
 			"isTrigger": true
 
@@ -51,26 +51,10 @@
 			"isTrigger": true
 
 		}, {
-			"Name": "Frog",
+			"Name": "stuffedAnimals",
 			"Text": "<b>Dust mites</b> live in items made of thick fibers, such as <b>stuffed toys</b>. <ul><li>Stuffed toys are a source for dust mites.</li><br /><li>Reduce or remove stuffed toys from the child's bedroom.</li></ul>",
 			"audioFile": "Frog.mp3",
 			"xValue": 30,
-			"yValue": 40,
-			"isTrigger": true
-
-		}, {
-			"Name": "Bunny",
-			"Text": "<b>Dust mites</b> live in items made of thick fibers, such as <b>stuffed toys</b>. <ul><li>Stuffed toys are a source for dust mites.</li><br /><li>Reduce or remove stuffed toys from the child's bedroom.</li></ul>",
-			"audioFile": "Squeak.mp3",
-			"xValue": 46,
-			"yValue": 40,
-			"isTrigger": true
-
-		}, {
-			"Name": "Bear",
-			"Text": "<b>Dust mites</b> live in items made of thick fibers, such as <b>stuffed toys</b>. <ul><li>Stuffed toys are a source for dust mites.</li><br /><li>Reduce or remove stuffed toys from the child's bedroom.</li></ul>",
-			"audioFile": "Squeak2.mp3",
-			"xValue": 51,
 			"yValue": 40,
 			"isTrigger": true
 
@@ -81,7 +65,7 @@
 			"loopAmount": 3,
 			"frameRate": 10,
 			"audioFile": "Spray.mp3",
-			"xValue": 67,
+			"xValue": 23,
 			"yValue": 29,
 			"isTrigger": true
 
