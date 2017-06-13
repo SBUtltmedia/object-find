@@ -26,7 +26,7 @@ $(function() {
     item.yValue = 10
     thoughts(item);
   })
-  loadNewRoom("bedRoom");
+  loadNewRoom("kitchen");
 
 });
 

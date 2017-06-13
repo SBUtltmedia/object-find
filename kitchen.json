@@ -1,11 +1,17 @@
 {
-	"roomImage": "bedRoom.svg",
+	"roomImage": "kitchen.svg",
 	"nextRoom": "Bathroom",
 	"targets": [{
-
+		"Name": "Ashtray",
+    "Text": "<p>This is a thing</p>",
+    "xValue": 45,
+    "yValue": 20
   },
   {
-
+		"Name": "BugSpray",
+    "Text": "<p>I'M BUGGING OUT MAN?</p>",
+    "xValue": 45,
+    "yValue": 20
   }
 
 	]
