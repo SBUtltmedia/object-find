@@ -1,6 +1,6 @@
 {
     "roomImage": "bathRoom.svg",
-    "nextRoom": "kitchen",
+    "nextRoom": "kitchen2",
     "targets": [
         {
             "Name": "MOLDY",

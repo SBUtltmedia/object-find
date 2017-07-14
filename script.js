@@ -26,7 +26,7 @@ $(function() {
     item.yValue = 10
     thoughts(item);
   })
-  loadNewRoom("kitchen");
+  loadNewRoom("bedRoom");
 
 });
 
@@ -105,7 +105,9 @@ function itemClicked(clickedItem) {
 
   }
 
-  startAnimating(fps, item);
+if(item["totalAnimationFrames"])
+{ startAnimating(fps, item);
+}
 };
 
 
@@ -194,7 +196,8 @@ function startAnimating(fps, item) {
   animationItem = item;
   animationItem.animationFrame = 1;
   animatingList.push(animationItem)
-  fpsInterval = 1000 / fps;
+fpsInterval = 1000 / fps;
+
   then = Date.now();
   startTime = then;
   animate();
@@ -218,12 +221,13 @@ function animate() {
         //var displayFrame = (animationFrame % animationItem.totalAnimationFrames) + 1
         var y = item.totalAnimationFrames
         var displayFrame = Math.abs((item.animationFrame + y - 2) % ((y - 1) * 2) - (y - 1)) + 1
-        console.log(displayFrame, item.animationFrame, item.totalAnimationFrames)
+
         $(selector + displayFrame).attr("style", "display:inline")
         item.animationFrame++
       } else {
         delete animatingList[index]
-        $(selector + 1).attr("style", "display:inline")
+        if (!item["stopAtEnd"]){$(selector + 1).attr("style", "display:inline")}
+        else{ $(selector+item.totalAnimationFrames).attr("style", "display:inline")}
       }
     });
   }

@@ -1,6 +1,6 @@
 {
     "roomImage": "livingRoom.svg",
-    "nextRoom": "bathRoom",
+    "nextRoom": "bathRoom2",
 
     "targets":[{
             "Name": "Plant",
@@ -23,7 +23,7 @@
             "yValue": 0
 
 },
- {
+{
             "Name": "Girl",
             "Text": "This is a girl. She is not an asthma trigger.",
             "xValue": 0,

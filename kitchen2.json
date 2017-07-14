@@ -1,6 +1,5 @@
 {
 	"roomImage": "kitchen.svg",
-	"nextRoom": "bedRoom2",
 	"targets": [{
 		"Name": "Ashtray",
     "Text": "<p>This is a thing</p>",
@@ -82,7 +81,7 @@
 		"isTrigger": true
 	},
 	{
-		"Name": "Mold",
+		"Name": "mold",
 		"Text": "<p>?</p>",
 		"xValue": 45,
 		"yValue": 20,
