@@ -1,12 +1,8 @@
 {
-  "roomImage": "bedRoom.svg",
+  "_comment": "BUG: if you end on the Dust the decrementor won't go down!",
+  "roomImage": "bedRoom2.svg",
   "nextRoom": "livingRoom",
-  "targets": [{
-    "Name": "ceilingLight",
-    "Text": "<b>House dust<\/b>\u00a0is a common allergy trigger and can cause symptoms to flare for some people with asthma. House dust contains many tiny particles, some of which can be from <b>pollen, mold, pet dander & hair, dust mites, and pests. Vacuum cleaners<\/b> contain dust particles and can be a source of home contamination with the dust. \u00a0",
-    "xValue": 45,
-    "yValue": 20
-  }, {
+  "targets": [ {
     "Name": "Window1",
     "Text": "This is a window. It is <b>not<\/b> an asthma trigger.",
     "xValue": 25,

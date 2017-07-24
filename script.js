@@ -27,10 +27,11 @@ $(function() {
     thoughts(item);
   })
   loadNewRoom("bedRoom");
-
+resizeScreen();
 });
-
+//setTimeout(resizeScreen,'200');																		//	For IE
 function resizeScreen() {
+  $("#roomSVG > svg").attr({'width':$("html").width()+'px','height':$("html").width()/1.6+'px'});	//	For IE
   //console.log($("html").width())
   $("html").css('fontSize', $("html").width() / 100 + "px");
 }
@@ -68,6 +69,7 @@ function roomSvgLoad() {
     console.log(triggersLeft);
   })
   makeClickEvents();
+  resizeScreen();																					//	For IE
 }
 
 function makeClickEvents() {

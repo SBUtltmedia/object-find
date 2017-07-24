@@ -19,8 +19,9 @@
 {
             "Name": "Sneakers",
             "Text": "Athletic equiptment.",
-            "xValue": 0,
-            "yValue": 0
+            "xValue": 50,
+            "yValue": 50,
+            "isTrigger":true
 
 },
 {
