@@ -17,23 +17,45 @@ var fps, fpsInterval, startTime, now, then, elapsed;
 $(window).resize(function() {
   resizeScreen();
 });
+
+function getParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
 $(function() {
+
+  loadNewRoom("bedRoom");
+
+  resizeScreen();
+});
+
+
+function showOpeningText() {
   $.get("opening.txt", function(data) {
     var item = {}
     item.Text = data;
 
     item.xValue = 5
     item.yValue = 10
-    thoughts(item);
+
   })
-  loadNewRoom("bedRoom");
-resizeScreen();
-});
+
+}
+
 //setTimeout(resizeScreen,'200');																		//	For IE
 function resizeScreen() {
-  $("#roomSVG > svg").attr({'width':$("html").width()+'px','height':$("html").width()/1.6+'px'});	//	For IE
+  $("#roomSVG > svg").attr({
+    'width': $("html").width() + 'px',
+    'height': $("html").width() / 1.6 + 'px'
+  }); //	For IE
   //console.log($("html").width())
-  $("html").css('fontSize', $("html").width() / 100 + "px");
+  $("html").css('fontSize', $("html").width() / 120 + "px");
 }
 
 function loadNewRoom(roomName) {
@@ -47,6 +69,7 @@ function loadNewRoom(roomName) {
     console.log(clickable);
     //$("#room").css("font-size", "100px");
     $("#roomSVG").load("img/" + data.roomImage, roomSvgLoad);
+
     resizeScreen();
   })
 }
@@ -69,7 +92,15 @@ function roomSvgLoad() {
     console.log(triggersLeft);
   })
   makeClickEvents();
-  resizeScreen();																					//	For IE
+  if (getParameterByName("edit")) {
+    var item = getParameterByName("item")
+    if (item) {
+      thoughts(clickable[lookup[item]]);
+    } else {
+      showOpeningText()
+    }
+  }
+  resizeScreen(); //	For IE
 }
 
 function makeClickEvents() {
@@ -94,7 +125,7 @@ function itemClicked(clickedItem) {
 
 
   }
-  thoughts(item);
+
 
   var fps = item.frameRate || defaultFrameRate;
   if ("audioFile" in item) {
@@ -107,9 +138,9 @@ function itemClicked(clickedItem) {
 
   }
 
-if(item["totalAnimationFrames"])
-{ startAnimating(fps, item);
-}
+  if (item["totalAnimationFrames"]) {
+    startAnimating(fps, item);
+  }
 };
 
 
@@ -146,7 +177,7 @@ function thoughts(it) {
     $("#thoughtBubble").addClass("thoughtPop");
     $("#thoughtBubble").css("display", "inline");
 
-    if (location.search=="?edit") {
+    if (getParameterByName("edit")) {
 
       $('#thoughtBubble p').html('<form><textarea id=txtArea></textarea> </form>');
 
@@ -166,7 +197,7 @@ function thoughts(it) {
           room: currentRoom,
           text: $('textarea').val()
         }).done(function(data) {
-          //alert("Data Loaded: " + data);
+          window.location="?edit=True&item="+it.Name;
         });
         console.log("" || it.Name)
         event.preventDefault();
@@ -198,7 +229,7 @@ function startAnimating(fps, item) {
   animationItem = item;
   animationItem.animationFrame = 1;
   animatingList.push(animationItem)
-fpsInterval = 1000 / fps;
+  fpsInterval = 1000 / fps;
 
   then = Date.now();
   startTime = then;
@@ -227,9 +258,13 @@ function animate() {
         $(selector + displayFrame).attr("style", "display:inline")
         item.animationFrame++
       } else {
+          thoughts(item);
         delete animatingList[index]
-        if (!item["stopAtEnd"]){$(selector + 1).attr("style", "display:inline")}
-        else{ $(selector+item.totalAnimationFrames).attr("style", "display:inline")}
+        if (!item["stopAtEnd"]) {
+          $(selector + 1).attr("style", "display:inline")
+        } else {
+          $(selector + item.totalAnimationFrames).attr("style", "display:inline")
+        }
       }
     });
   }
