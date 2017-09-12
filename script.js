@@ -13,6 +13,7 @@ var stop = false;
 var frameCount = 0;
 var nextRoom;
 var currentRoom;
+var phase;
 var fps, fpsInterval, startTime, now, then, elapsed;
 $(window).resize(function() {
   resizeScreen();
@@ -29,24 +30,17 @@ function getParameterByName(name, url) {
 }
 
 $(function() {
+  var startingRoom = getParameterByName("room");
+  console.log(startingRoom)
+  if (!startingRoom) {
+    startingRoom = "bedRoom";
+  }
 
-  loadNewRoom("bedRoom");
+  loadNewRoom(startingRoom);
 
   resizeScreen();
 });
 
-
-function showOpeningText() {
-  $.get("opening.txt", function(data) {
-    var item = {}
-    item.Text = data;
-
-    item.xValue = 5
-    item.yValue = 10
-
-  })
-
-}
 
 //setTimeout(resizeScreen,'200');																		//	For IE
 function resizeScreen() {
@@ -60,10 +54,16 @@ function resizeScreen() {
 
 function loadNewRoom(roomName) {
   currentRoom = roomName;
+  var roomPhase = roomName;
+  var phase = getParameterByName("phase");
+  if (phase) {
+    roomPhase += phase;
+  }
   totalTriggers = 0;
-  $.getJSON(roomName + ".json", function(data) {
+  $.getJSON(roomPhase + ".json", function(data) {
     console.log(data);
     nextRoom = data.nextRoom;
+
     console.log(nextRoom);
     clickable = data.targets;
     console.log(clickable);
@@ -96,10 +96,10 @@ function roomSvgLoad() {
     var item = getParameterByName("item")
     if (item) {
       thoughts(clickable[lookup[item]]);
-    } else {
-      showOpeningText()
     }
   }
+
+  thoughts(clickable[lookup["Intro"]]);
   resizeScreen(); //	For IE
 }
 
@@ -140,13 +140,25 @@ function itemClicked(clickedItem) {
 
   if (item["totalAnimationFrames"]) {
     startAnimating(fps, item);
+  } else {
+    thoughts(item);
+    if ("isTrigger" in item) {
+      disappear($("#"+item.Name));
+    }
   }
 };
 
-
-
-
-
+function disappear(it){
+  console.log(it);
+  it.animate({
+      opacity: 0
+    },
+    1000,
+    function() {
+      $(this).css('visibility', 'hidden');
+    }
+  );
+}
 
 function thoughts(it) {
   $("#thoughtBubble").removeClass("thoughtPop");
@@ -197,7 +209,7 @@ function thoughts(it) {
           room: currentRoom,
           text: $('textarea').val()
         }).done(function(data) {
-          window.location="?edit=True&item="+it.Name;
+          window.location = "?edit=True&item=" + it.Name;
         });
         console.log("" || it.Name)
         event.preventDefault();
@@ -258,13 +270,11 @@ function animate() {
         $(selector + displayFrame).attr("style", "display:inline")
         item.animationFrame++
       } else {
-          thoughts(item);
+        thoughts(item);
         delete animatingList[index]
-        if (!item["stopAtEnd"]) {
-          $(selector + 1).attr("style", "display:inline")
-        } else {
-          $(selector + item.totalAnimationFrames).attr("style", "display:inline")
-        }
+        $(selector + 1).attr("style", "display:inline");
+        disappear($(selector + 1));
+
       }
     });
   }
