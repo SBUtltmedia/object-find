@@ -92,14 +92,14 @@ function roomSvgLoad() {
     console.log(triggersLeft);
   })
   makeClickEvents();
-  if (getParameterByName("edit")) {
+
     var item = getParameterByName("item")
     if (item) {
-      thoughts(clickable[lookup[item]]);
+      thoughts(clickable[lookup[item]])
     }
-  }
-
+else{
   thoughts(clickable[lookup["Intro"]]);
+}
   resizeScreen(); //	For IE
 }
 
@@ -168,9 +168,9 @@ function thoughts(it) {
   }, 20);
 
   var alreadyClickedText = ""
-  if (it.unClicked == false) {
-    alreadyClickedText = " <em>(You found this trigger already!)</em>"
-  }
+  // if (it.unClicked == false) {
+  //   alreadyClickedText = " <em>(You found this trigger already!)</em>"
+  // }
 
   $("#close").click(function(evt) {
 
@@ -209,7 +209,7 @@ function thoughts(it) {
           room: currentRoom,
           text: $('textarea').val()
         }).done(function(data) {
-          window.location = "?edit=True&item=" + it.Name;
+          window.location = "?edit=True&item=" + it.Name+"&room="+currentRoom;
         });
         console.log("" || it.Name)
         event.preventDefault();

@@ -1,5 +1,4 @@
 {
-  "_comment": "BUG: if you end on the Dust the decrementor won't go down!",
   "roomImage": "bedRoom2.svg",
   "nextRoom": "bedRoom2",
   "targets": [{
@@ -40,7 +39,7 @@
   }, {
     "Name": "stuffedAnimals",
     "Text": "<p><strong>Dust mites<\/strong> live in items made of thick fibers, such as <strong>stuffed toys<\/strong>.<\/p>\n\n<ul>\n\t<li>Stuffed toys are a source for dust mites.<\/li>\n\t<br \/>\n\t<li>Reduce or remove stuffed toys from the child&#39;s bedroom.&nbsp;<\/li>\n<\/ul>\n",
-    "audioFile": "Frog.mp3",
+    "audioFile": "Squeak2.mp3",
     "xValue": 30,
     "yValue": 20,
     "isTrigger": true
@@ -60,7 +59,7 @@
   }, {
     "Name": "Curtains_1",
     "Text": "<p><strong>Pollens<\/strong> blowing in from outdoors can be sources of allergens and may trigger asthma symptoms in some people. &nbsp;&nbsp;They can be in the air, outdoors as well as indoors, they can land on household surfaces, car interiors and car exteriors. &nbsp;<\/p>\n\n<p><strong>How to avoid this trigger<\/strong>:<\/p>\n\n<p>&bull; Keep windows closed especially during high pollen days.<\/p>\n\n<p>Pay attention to pollen levels. Check online, TV or sign up for weather &amp; pollen alerts<\/p>\n\n<p>&bull; Do not dry laundry outdoors<\/p>\n\n<p>&bull; Limit time spent outdoors on high pollen days and times. Remove clothing worn outdoors before sitting or lying on indoor furniture &amp; bedroom areas, shower before going to bed. &nbsp;&nbsp;<\/p>\n\n<p>&bull; Wipe away dust on all surfaces with a damp cloth and vacuum once a week. Clean curtains, window treatments, and bedding often dust may contain pollens.<\/p>\n\n<p>&bull; Use a vacuum cleaner with a high efficiency filter (HEPA filter vacuum) to clean pollen dust<\/p>\n\n<p>&bull; Use window filters, or air conditioning, to filter out pollen in the air<\/p>\n\n<p>HEPA&nbsp;filter air purifiers (AVOID IONIC &amp; OZONE PRODUCING TYPES) may help reduce airborne pollens<\/p>\n",
-    "totalAnimationFrames": 5,
+    "totalAnimationFrames": 3,
     "loopAmount": 10,
     "frameRate": 5,
     "audioFile": "Outside.mp3",

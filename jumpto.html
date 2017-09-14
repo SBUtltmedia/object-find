@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Trigger Jump 2</title>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div id="blueprint">
+    <img src="/asthma/img/houseMap.svg" alt="Blueprint image" style="width:40%;">
+  </div>
+
+  <div id="list">
+
+  </div>
+
+
+  <script type="text/javascript">
+  var rooms = ["bedRoom", "livingRoom", "bathRoom", "kitchen", "bedRoom2", "livingRoom2", "bathRoom2", "kitchen2"];
+
+  rooms.forEach(function(element){
+    $( "#list" ).append( "<div id='" + element + "'></div>" );
+    var thisList = $("#" + element);
+    thisList.append("<h3>" + element + "</h3>")
+    $.getJSON(element + ".json", function(data) {
+      for( i in data.targets){
+        if (data.targets[i].isTrigger = true){
+          console.log(data.targets[i].Name);
+          var it = data.targets[i].Name;
+          thisList.append("<p><a href='https://apps.tlt.stonybrook.edu/asthma/?edit=True&item=" + it +"&room=" + element + "'>" + it + "</a></p>");
+        }
+
+
+      }
+
+    })
+  });
+
+
+  </script>
+</body>
+</html>
