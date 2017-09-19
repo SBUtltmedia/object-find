@@ -137,7 +137,6 @@ function itemClicked(clickedItem) {
     }
 
   }
-
   if (item["totalAnimationFrames"]) {
     startAnimating(fps, item);
   } else {
