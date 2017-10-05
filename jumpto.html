@@ -6,37 +6,42 @@
 </head>
 
 <body>
-  <div id="blueprint">
-    <img src="/asthma/img/houseMap.svg" alt="Blueprint image" style="width:40%;">
-  </div>
+<div id="blueprint">
+<img src="/asthma/img/houseMap.svg" alt="Blueprint image" style="width:40%;">
+</div>
 
-  <div id="list">
+<div id="list">
 
-  </div>
-
-
-  <script type="text/javascript">
-  var rooms = ["bedRoom", "livingRoom", "bathRoom", "kitchen", "bedRoom2", "livingRoom2", "bathRoom2", "kitchen2"];
-
-  rooms.forEach(function(element){
-    $( "#list" ).append( "<div id='" + element + "'></div>" );
-    var thisList = $("#" + element);
-    thisList.append("<h3>" + element + "</h3>")
-    $.getJSON(element + ".json", function(data) {
-      for( i in data.targets){
-        if (data.targets[i].isTrigger = true){
-          console.log(data.targets[i].Name);
-          var it = data.targets[i].Name;
-          thisList.append("<p><a href='https://apps.tlt.stonybrook.edu/asthma/?edit=True&item=" + it +"&room=" + element + "'>" + it + "</a></p>");
-        }
+</div>
 
 
-      }
+<script type="text/javascript">
+var rooms = ["bedRoom", "livingRoom", "bathRoom", "kitchen"];
 
-    })
-  });
+rooms.forEach(function(room){
+		[0,1].forEach(function(phase){
+
+			var filePrefix=room + phase;
+			$( "#list" ).append( "<div id='" + filePrefix + "'></div>" );
+			var thisList = $("#" + filePrefix);
+			thisList.append("<h3>" + room + " Phase "+ (phase+1)+"</h3>");
+			$.getJSON(filePrefix+".json", function(data) {
+				for( i in data.targets){
+				if (data.targets[i].isTrigger = true){
+				console.log(data.targets[i].Name);
+				var it = data.targets[i].Name;
+				$("#" + filePrefix).append("<p><a href='https://apps.tlt.stonybrook.edu/asthma/?edit=True&item=" + it +"&room=" + room + "&phase="+phase+"'>" + it + "</a></p>");
+				console.log("<p><a href='https://apps.tlt.stonybrook.edu/asthma/?edit=True&item=" + it +"&room=" + room + "&phase="+phase+">" + it + "</a></p>");
+				}
 
 
-  </script>
+				}
+
+				})
+			});  
+		});
+
+
+</script>
 </body>
 </html>

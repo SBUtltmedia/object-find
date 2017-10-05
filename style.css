@@ -86,6 +86,16 @@ b {
     color: red;
 }
 
+#phaseNum {
+    position: absolute;
+    top:2rem;
+    right:2rem;
+    font-family: "Lucida Sans", sans-serif;
+    font-size: 6rem;
+    color: red;
+}
+
+
 #close {
     float: right;
     display: inline-block;
