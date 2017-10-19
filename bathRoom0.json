@@ -1,6 +1,6 @@
 {
     "roomImage": "bathRoom.svg",
-    "nextRoom": "kitchen",
+    "nextRoom": "bathRoom",
     "targets": [
         {
             "Name": "MOLDY",
@@ -11,8 +11,6 @@
 }, {
             "Name": "Cat",
             "Text": "<b>Furry pets</b> can trigger an asthma attack. <ul><li>Keep furry pets out of bedrooms.</li><br /><li>Wash furry pets often (in the bathtub).</li></ul>",
-            "totalAnimationFrames": 3,
-            "loopAmount": 3,
             "audioFile": "Cat.mp3",
             "xValue": 25,
             "yValue": 40,

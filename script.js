@@ -13,7 +13,7 @@ var stop = false;
 var frameCount = 0;
 var nextRoom;
 var currentRoom;
-var phaseText = ["Find the Trigger", "What to do about the Trigger?"]
+var phaseText = ["Find the Trigger", "Ways to avoid the trigger:"]
 var phase = getParameterByName("phase");
 if (!phase) {
   phase = 0
@@ -96,6 +96,7 @@ function roomSvgLoad() {
   var item = getParameterByName("item")
   if (item) {
     thoughts(clickable[lookup[item]])
+    countTriggers(item)
   } else {
     thoughts(clickable[lookup["Intro"]]);
   }
@@ -116,7 +117,8 @@ function itemClicked(clickedItem) {
   //console.log(clickedItem);
   if (clickedItem == "Door") {
 
-    if (triggersLeft == 0) {
+    if (!triggersLeft) {
+      changePhase();
       loadNewRoom(nextRoom);
       return;
     }
@@ -147,7 +149,7 @@ function itemClicked(clickedItem) {
 };
 
 function disappear(it) {
-  if (phase == 1 && triggersLeft) {
+  if (phase == 1) {
     it.animate({
         opacity: 0
       },
@@ -229,11 +231,7 @@ function thoughts(it) {
 
 function countTriggers(item) {
   triggersLeft--;
-
   displayTriggersLeft();
-  if (!triggersLeft) {
-    changePhase();
-  }
 }
 
 function changePhase() {

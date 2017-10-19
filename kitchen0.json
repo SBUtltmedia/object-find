@@ -1,6 +1,6 @@
 {
   "roomImage": "kitchen.svg",
-  "nextRoom": "bedRoom",
+  "nextRoom": "kitchen",
   "targets": [{
     "Name": "Ashtray",
     "Text": "<p>This is a thing<\/p>",
