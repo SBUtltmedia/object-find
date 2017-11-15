@@ -2,9 +2,8 @@
   "roomImage": "bedRoom2.svg",
   "nextRoom": "bedRoom",
   "targets": [{
-    "Name": "Cat_1",
+    "Name": "Cat",
     "Text": "<p><strong>Furry pets (Dog, Cats, Birds, Hamsters, Guinea Pigs, and Rabbits)<\/strong> are a common allergen that can trigger asthma symptoms in some people.<\/p>\n\n<p>Pet hair and dander, especially cat hair, can fly in the air and be deposited on surfaces throughout the house and on items in the home.<\/p>\n",
-    "totalAnimationFrames": 3,
     "loopAmount": 3,
     "audioFile": "Cat.mp3",
     "xValue": 47,
@@ -13,7 +12,6 @@
   }, {
     "Name": "Bed",
     "Text": "<p><strong>Dust mites<\/strong> live in items made of thick fibers, such as <strong>bedding<\/strong>.<\/p>\n\n<ul>\n\t<li>Cover mattress, pillows, and all bedding with allergy-proof dust mite encasements.<\/li>\n\t<br \/>\n\t<li>Wash and dry all bedding on high heat at least every two weeks<\/li>\n\t<br \/>\n\t<li>Keep humidity level in home under 50%.<\/li>\n<\/ul>\n\n<p>spaghetti<\/p>\n",
-    "audioFile": "Bedsheets.mp3",
     "xValue": 45,
     "yValue": 20,
     "isTrigger": true
@@ -28,10 +26,9 @@
     "xValue": 15,
     "yValue": 40
   }, {
-    "Name": "Dust_1",
+    "Name": "Dust",
     "Text": "<p><strong>House dust <\/strong>is a common allergy trigger for some people with asthma and can cause asthma symptoms or make asthma get worse. House dust contains many tiny particles, some of which can be from pollen, mold, pet dander &amp; hair, dust mites, and pests. Vacuum cleaners contain dust particles and can spread the dust. &nbsp;<\/p>\n\n<p><strong>How to avoid this trigger<\/strong>:<\/p>\n\n<p>&bull; Vacuum when the person with asthma is NOT at home because dust from vacuuming can be spread back into the air.<\/p>\n\n<p>&bull; Use a vacuum cleaner with a high efficiency filter (HEPA filter vacuum) on carpet and fabric-covered furniture to reduce dust build-up and reduce the amount of dust coming out of the vacuum.<\/p>\n\n<p>&bull; Be careful when emptying the dirt from the vacuum cleaner to avoid the collected dust spreading in the air.<\/p>\n\n<p>&bull; Central heating and air conditioning systems may help control dust, change filters often.<\/p>\n\n<p>&bull; Wipe away dust on all surfaces with a damp cloth and vacuum once a week.<\/p>\n\n<p>&bull; Reduce clutter to help reduce dust.<\/p>\n\n<p>&bull; Consider using a HEPA air purifier (AVOID IONIC &amp; OZONE PRODUCING TYPES) if airborne dust is a problem.<\/p>\n",
-    "totalAnimationFrames": 8,
-    "loopAmount": 1,
+    "loopAmount": 0,
     "frameRate": 3,
     "xValue": 30,
     "yValue": 10,
@@ -44,11 +41,10 @@
     "yValue": 20,
     "isTrigger": true
   }, {
-    "Name": "Perfume_1",
+    "Name": "Perfume",
     "Text": "<p>Aerosol Sprays and strong scents (like perfume, hairspray, and cleaning products) can be an inhaled irritant and trigger asthma symptoms for some people with asthma. &nbsp;<\/p>\n\n<p><strong>How to avoid this trigger:<\/strong><\/p>\n\n<p>&bull; Avoid using aerosol sprays indoors<\/p>\n\n<p>&bull; Avoid use of products that are heavily scented<\/p>\n\n<p>&bull; Air out a room where sprays were used<\/p>\n",
     "totalAnimationFrames": 4,
-    "loopAmount": 3,
-    "frameRate": 10,
+    "loopAmount":3,
     "audioFile": "Spray.mp3",
     "xValue": 23,
     "yValue": 18,
@@ -72,8 +68,7 @@
     "Name": "Ledge",
     "Text": "This is the window sill. It <b>is<\/b> an asthma trigger, but you're getting warmer!",
     "xValue": 1,
-    "yValue": 35,
-    "isTrigger": true
+    "yValue": 35
   }, {
     "Name": "Clock",
     "Text": "This is an alarm clock. It is <b>not<\/b> an asthma trigger. You're getting warmer, though!",

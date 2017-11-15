@@ -71,7 +71,8 @@
     "Text": "Pay attention to <b>pollen<\/b> levels. <ul><li>Keep windows closed in the child's bedroom.<\/li><br \/><li>Use window filters, air conditioning, and air purifiers to filter out pollen airborne in the home.<\/li><\/ul>",
     "audioFile": "Outside.mp3",
     "xValue": 25,
-    "yValue": 20
+    "yValue": 20,
+    "isTrigger": true
   }, {
     "Name": "Carpet",
     "Text": "<b>Dust mites<\/b> live in items made of thick fibers, such as <b>carpets<\/b> or <b>rugs<\/b>. <ul><li>Avoid use of or remove all carpeting in the home.<\/li><br \/><li>Replace carpeting with flooring that can be <b>damp mopped often<\/b>.<\/li><br \/><li>If you must retain the carpet, use a vacuum cleaner with a high efficiency filter or a central vacuum cleaner.<\/li><\/ul>",
@@ -82,8 +83,7 @@
     "Name": "Ledge",
     "Text": "This is the window sill. It <b>is<\/b> an asthma trigger, but you're getting warmer!",
     "xValue": 1,
-    "yValue": 35,
-    "isTrigger": true
+    "yValue": 35
   }, {
     "Name": "Clock",
     "Text": "This is an alarm clock. It is <b>not<\/b> an asthma trigger. You're getting warmer, though!",

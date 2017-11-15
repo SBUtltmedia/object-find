@@ -5,8 +5,7 @@
     "Name": "Plant",
     "Text": "<b>Plants<\/b> can grow mold in the soil. <ul><li><b>Molds<\/b> are microscopic fungi that live in <b>plant soil<\/b> and animal matter.<\/li><\/ul>If <b>mold<\/b> is a problem in the home, clean up the mold and eliminate the source.<ul><li>Maintain low indoor humidity, ideally between 30-50% relative humidity.<\/li><br \/><li>Humidity levels can be measured by hygrometers, which are available at local hardware stores.<\/li>",
     "xValue": 50,
-    "yValue": 30,
-    "isTrigger": true
+    "yValue": 30
   }, {
     "Name": "Window",
     "Text": "This is a window. It is <b>not<\/b> an asthma trigger.",

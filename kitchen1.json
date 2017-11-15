@@ -1,8 +1,8 @@
 {
-	"roomImage": "kitchen.svg",
+	"roomImage": "KitchenDollHouse.svg",
 	"targets": [{
 		"Name": "Ashtray",
-    "Text": "<p>This is a thing</p>",
+    "Text": "<p>This is a Ashtray</p>",
     "xValue": 45,
     "yValue": 20,
 		"isTrigger": true
@@ -16,26 +16,26 @@
   },
 	{
 		"Name": "roach",
-		"Text": "<p>?</p>",
+		"Text": "<p>roach?</p>",
     "xValue": 45,
     "yValue": 20,
 		"isTrigger": true
 	},
 	{
 		"Name": "Candles",
-		"Text": "<p>?</p>",
+		"Text": "<p>Candles?</p>",
     "xValue": 45,
     "yValue": 20
 	},
 	{
 		"Name": "rat",
-		"Text": "<p>?</p>",
+		"Text": "<p>rat?</p>",
 		"xValue": 45,
 		"yValue": 20
 	},
 	{
 		"Name": "Dog",
-		"Text": "<p>?</p>",
+		"Text": "<p>Dog?</p>",
 		"xValue": 45,
 		"yValue": 20
 	},
@@ -44,14 +44,14 @@
 	},
 	{
 		"Name": "Crack",
-		"Text": "<p>?</p>",
+		"Text": "<p>Crack?</p>",
 		"xValue": 45,
 		"yValue": 20,
 		"isTrigger": true
 	},
 	{
 		"Name": "Pan",
-		"Text": "<p>?</p>",
+		"Text": "<p>Pan?</p>",
 		"totalAnimationFrames": 3,
     "loopAmount": 1,
 		"stopAtEnd":true,
@@ -62,27 +62,27 @@
 	},
 	{
 		"Name": "Stove",
-		"Text": "<p>?</p>",
+		"Text": "<p>Stove?</p>",
 		"xValue": 45,
 		"yValue": 20
 	},
 	{
 		"Name": "Febreze",
-		"Text": "<p>?</p>",
+		"Text": "<p>Febreze?</p>",
 		"xValue": 45,
 		"yValue": 20,
 		"isTrigger": true
 	},
 	{
 		"Name": "dogBowl",
-		"Text": "<p>?</p>",
+		"Text": "<p>?dogBowl</p>",
 		"xValue": 45,
 		"yValue": 20,
 		"isTrigger": true
 	},
 	{
-		"Name": "mold",
-		"Text": "<p>?</p>",
+		"Name": "Mold",
+		"Text": "<p>?mold</p>",
 		"xValue": 45,
 		"yValue": 20,
 		"isTrigger": true

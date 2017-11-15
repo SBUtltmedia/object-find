@@ -15,6 +15,7 @@ var nextRoom;
 var currentRoom;
 var phaseText = ["Find the Trigger", "Ways to avoid the trigger:"]
 var phase = getParameterByName("phase");
+
 if (!phase) {
   phase = 0
 }
@@ -38,7 +39,7 @@ function getParameterByName(name, url) {
 }
 
 $(function() {
-currentRoom= getParameterByName("room");
+  currentRoom = getParameterByName("room");
   if (!currentRoom) {
     currentRoom = "bedRoom";
   }
@@ -63,7 +64,7 @@ function loadNewRoom(roomName) {
 
   $('#phaseNum').html(phaseText[phase]);
   totalTriggers = 0;
-  $.getJSON(roomName+phase + ".json", function(data) {
+  $.getJSON(roomName + phase + ".json", function(data) {
     console.log(data);
     nextRoom = data.nextRoom;
 
@@ -77,6 +78,7 @@ function loadNewRoom(roomName) {
 
 function roomSvgLoad() {
   $(clickable).each(function(index, value) {
+		console.log(value.Name)
     if ("audioFile" in value) {
       soundEffects[value.Name] = ss_soundbits("audio/" + value.audioFile);
     }
@@ -84,7 +86,8 @@ function roomSvgLoad() {
       totalTriggers++;
       value.unClicked = true;
     }
-    triggersLeft = totalTriggers;
+    triggersLeft = getParameterByName("triggersLeft") || totalTriggers;
+
     displayTriggersLeft();
 
     $("#" + value.Name).addClass("clickable")
@@ -93,39 +96,33 @@ function roomSvgLoad() {
   })
   makeClickEvents();
 
-  var item = getParameterByName("item")
-  if (item) {
-    thoughts(clickable[lookup[item]])
-    countTriggers(item)
-  } else {
-    thoughts(clickable[lookup["Intro"]]);
-  }
+  var item = getParameterByName("item") ||"Intro"
+
+$('#'+item).trigger('click')
   resizeScreen(); //	For IE
 }
 
 function makeClickEvents() {
 
   $(".clickable").click(function(evt) {
-    //  console.log(evt.currentTarget)
-    var clickedItem = evt.currentTarget.id // $(evt.target).closest('.clickable').attr("id");
+console.log(evt)
+
+    var clickedItem = evt.currentTarget.id
+		  if (clickedItem == "Door") {
+		if (!triggersLeft) {
+			changePhase();
+			loadNewRoom(nextRoom);
+			evt.preventDefault();
+			return;
+		}
+	}
+// $(evt.target).closest('.clickable').attr("id");
     itemClicked(clickedItem)
   });
 }
 
 function itemClicked(clickedItem) {
   var item = clickable[lookup[clickedItem]];
-  //console.log(clickedItem);
-  if (clickedItem == "Door") {
-
-    if (!triggersLeft) {
-      changePhase();
-      loadNewRoom(nextRoom);
-      return;
-    }
-
-
-
-  }
 
 
   var fps = item.frameRate || defaultFrameRate;
@@ -138,41 +135,42 @@ function itemClicked(clickedItem) {
     }
 
   }
-  if (item["totalAnimationFrames"]) {
+
     startAnimating(fps, item);
-  } else {
-    thoughts(item);
-    if ("isTrigger" in item) {
-      disappear($("#" + item.Name));
-    }
-  }
+
+
 };
 
 function disappear(it) {
-  if (phase == 1) {
-    it.animate({
-        opacity: 0
-      },
-      1000,
-      function() {
-        $(this).css('visibility', 'hidden');
-      }
-    );
-  }
+console.log("dis",phase)
+  it.animate({
+      opacity: 0
+    },
+    1000,
+    function() {
+
+      $(this).css('visibility', 'hidden');
+    }
+  );
+
 }
 
 
 function thoughts(it) {
+console.log(it)
   $("#thoughtBubble").removeClass("thoughtPop");
-  //$("#thoughtBubble").css("display: block");
-  setTimeout(function() {
-    displayThought()
-  }, 20);
+
+
+
+
 
   var alreadyClickedText = ""
-  if (it.unClicked == false) {
-    alreadyClickedText = " <em>(You  already!)</em>"
+  if (!it.unClicked && it.isTrigger) {
+    alreadyClickedText = " <em>(You found this already!)</em>"
   }
+
+
+	    displayThought()
   it.unClicked = false;
   $("#close").click(function(evt) {
 
@@ -208,11 +206,11 @@ function thoughts(it) {
 
         $.post("save.php", {
           name: it.Name,
-          room: currentRoom+phase,
+          room: currentRoom + phase,
           text: $('textarea').val()
         }).done(function(data) {
-          window.location = "?edit=True&item=" + it.Name + "&room=" + currentRoom+"&phase="+phase;
-              ///  window.location = window.location.search
+          window.location = "?edit=True&item=" + it.Name + "&room=" + currentRoom + "&phase=" + phase;
+          ///  window.location = window.location.search
         });
         console.log("" || it.Name)
         event.preventDefault();
@@ -230,11 +228,12 @@ function thoughts(it) {
 }
 
 function countTriggers(item) {
-  triggersLeft--;
+  if (triggersLeft) triggersLeft--;
   displayTriggersLeft();
 }
 
 function changePhase() {
+	console.log("phase")
   phase = phase == 0 ? 1 : 0;
 }
 
@@ -270,9 +269,11 @@ function animate() {
       var itemID = item.Name.split("_")[0] + "_";
       var selector = "#" + itemID;
       $("[id^='" + itemID + "']").attr("style", "display:none")
-      if (item.animationFrame < animationItem.totalAnimationFrames * animationItem.loopAmount) {
+			 var y= $("[id^='" + itemID + "']").length;
+
+      if (item.animationFrame < y * (animationItem.loopAmount+1)) {
         //var displayFrame = (animationFrame % animationItem.totalAnimationFrames) + 1
-        var y = item.totalAnimationFrames
+				//wacky cal
         var displayFrame = Math.abs((item.animationFrame + y - 2) % ((y - 1) * 2) - (y - 1)) + 1
 
         $(selector + displayFrame).attr("style", "display:inline")
@@ -281,8 +282,9 @@ function animate() {
         thoughts(item);
         delete animatingList[index]
         $(selector + 1).attr("style", "display:inline");
+				if(phase==1){
         disappear($(selector + 1));
-
+}
       }
     });
   }
