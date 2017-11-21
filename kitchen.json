@@ -1,0 +1,134 @@
+{
+  "roomImage": "KitchenDollHouse.svg", 
+  "targets": [
+    {
+      "Text": [
+        "<p>This is a Ashtray</p>", 
+        "<p>This not is a Ashtray</p>"
+      ], 
+      "xValue": 45, 
+      "isTrigger": true, 
+      "yValue": 20, 
+      "Name": "Ashtray"
+    }, 
+    {
+      "Text": [
+        "<p>I'M BUGGING OUT MAN?</p>", 
+        "<p>I'M BUGGING OUT MAN?</p>"
+      ], 
+      "xValue": 45, 
+      "isTrigger": true, 
+      "yValue": 20, 
+      "Name": "BugSpray"
+    }, 
+    {
+      "Name": "Roach", 
+      "Text": [
+        "<p>roach?</p>", 
+        "<p>roach?</p>"
+      ], 
+      "loopAmount": 0, 
+      "frameRate": 7, 
+      "isTrigger": true, 
+      "yValue": 20, 
+      "xValue": 45
+    }, 
+    {
+      "Text": [
+        "<p>Candles?</p>", 
+        "<p>Candles?</p>"
+      ], 
+      "Name": "Candles", 
+      "yValue": 20, 
+      "xValue": 45
+    }, 
+    {
+      "xValue": 45, 
+      "Text": [
+        "<p>rat?</p>", 
+        "<p>rat?</p>"
+      ], 
+      "loopAmount": 0, 
+      "frameRate": 5, 
+      "Name": "Rat", 
+      "yValue": 20, 
+      "stopAtEnd": true
+    }, 
+    {
+      "Name": "Dog", 
+      "Text": [
+        "<p>Dog?</p>", 
+        "<p>Dog?</p>"
+      ], 
+      "loopAmount": 1, 
+      "frameRate": 3, 
+      "yValue": 20, 
+      "xValue": 45
+    }, 
+    {
+      "Name": "Door"
+    }, 
+    {
+      "Text": [
+        "<p>Crack?</p>", 
+        "<p>Crack?</p>"
+      ], 
+      "xValue": 45, 
+      "isTrigger": true, 
+      "yValue": 20, 
+      "Name": "Crack"
+    }, 
+    {
+      "xValue": 45, 
+      "Text": [
+        "<p>Pan?</p>", 
+        "<p>Pan?</p>"
+      ], 
+      "loopAmount": 0, 
+      "frameRate": 3, 
+      "isTrigger": true, 
+      "Name": "Pan", 
+      "yValue": 20, 
+      "stopAtEnd": true
+    }, 
+    {
+      "Text": [
+        "<p>Stove?</p>", 
+        "<p>Stove?</p>"
+      ], 
+      "Name": "Stove", 
+      "yValue": 20, 
+      "xValue": 45
+    }, 
+    {
+      "xValue": 45, 
+      "Text": [
+        "<p>Febreze?</p>", 
+        "<p>Febreze?</p>"
+      ], 
+      "frameRate": 3, 
+      "isTrigger": true, 
+      "yValue": 20, 
+      "Name": "Febreze"
+    }, 
+    {
+      "Text": [
+        "<p>?dogBowl</p>", 
+        "<p>?dogBowl</p>"
+      ], 
+      "Name": "dogBowl", 
+      "yValue": 20, 
+      "xValue": 45
+    }, 
+    {
+      "Text": [
+        "<p>?mold</p>", 
+        "<p>?mold</p>"
+      ], 
+      "xValue": 45, 
+      "isTrigger": true, 
+      "yValue": 20, 
+      "Name": "Mold"
+    }
+  ]
+}

@@ -64,7 +64,7 @@ function loadNewRoom(roomName) {
 
   $('#phaseNum').html(phaseText[phase]);
   totalTriggers = 0;
-  $.getJSON(roomName + phase + ".json", function(data) {
+  $.getJSON(roomName + ".json", function(data) {
     console.log(data);
     nextRoom = data.nextRoom;
 
@@ -78,7 +78,7 @@ function loadNewRoom(roomName) {
 
 function roomSvgLoad() {
   $(clickable).each(function(index, value) {
-		console.log(value.Name)
+    console.log(value.Name)
     if ("audioFile" in value) {
       soundEffects[value.Name] = ss_soundbits("audio/" + value.audioFile);
     }
@@ -96,27 +96,27 @@ function roomSvgLoad() {
   })
   makeClickEvents();
 
-  var item = getParameterByName("item") ||"Intro"
+  var item = getParameterByName("item") || "Intro"
 
-$('#'+item).trigger('click')
+  $('#' + item).trigger('click')
   resizeScreen(); //	For IE
 }
 
 function makeClickEvents() {
 
   $(".clickable").click(function(evt) {
-console.log(evt)
+    console.log(evt)
 
     var clickedItem = evt.currentTarget.id
-		  if (clickedItem == "Door") {
-		if (!triggersLeft) {
-			changePhase();
-			loadNewRoom(nextRoom);
-			evt.preventDefault();
-			return;
-		}
-	}
-// $(evt.target).closest('.clickable').attr("id");
+    if (clickedItem == "Door") {
+      if (!triggersLeft) {
+        changePhase();
+        loadNewRoom(nextRoom);
+        evt.preventDefault();
+        return;
+      }
+    }
+    // $(evt.target).closest('.clickable').attr("id");
     itemClicked(clickedItem)
   });
 }
@@ -136,13 +136,13 @@ function itemClicked(clickedItem) {
 
   }
 
-    startAnimating(fps, item);
+  startAnimating(fps, item);
 
 
 };
 
 function disappear(it) {
-console.log("dis",phase)
+  console.log("dis", phase)
   it.animate({
       opacity: 0
     },
@@ -157,7 +157,7 @@ console.log("dis",phase)
 
 
 function thoughts(it) {
-console.log(it)
+  console.log(it)
   $("#thoughtBubble").removeClass("thoughtPop");
 
 
@@ -170,7 +170,7 @@ console.log(it)
   }
 
 
-	    displayThought()
+  displayThought()
   it.unClicked = false;
   $("#close").click(function(evt) {
 
@@ -200,13 +200,14 @@ console.log(it)
         width: "100%"
       });
 
-      $('textarea').val(it.Text)
+      $('textarea').val(it.Text[phase])
 
       $('form').submit(function(event) {
 
         $.post("save.php", {
           name: it.Name,
-          room: currentRoom + phase,
+          room: currentRoom,
+					phase: phase,
           text: $('textarea').val()
         }).done(function(data) {
           window.location = "?edit=True&item=" + it.Name + "&room=" + currentRoom + "&phase=" + phase;
@@ -219,7 +220,7 @@ console.log(it)
 
 
     } else {
-      $("#thoughtBubble p").html(it.Text + alreadyClickedText)
+      $("#thoughtBubble p").html(it.Text[phase] + alreadyClickedText)
     }
 
   }
@@ -233,7 +234,7 @@ function countTriggers(item) {
 }
 
 function changePhase() {
-	console.log("phase")
+  console.log("phase")
   phase = phase == 0 ? 1 : 0;
 }
 
@@ -247,6 +248,7 @@ function displayTriggersLeft() {
 function startAnimating(fps, item) {
   animationItem = item;
   animationItem.animationFrame = 1;
+	animationItem.loopAmount= item.loopAmount|0;
   animatingList.push(animationItem)
   fpsInterval = 1000 / fps;
 
@@ -256,6 +258,7 @@ function startAnimating(fps, item) {
 }
 
 function animate() {
+
   // request another frame
   isAnimating = requestAnimationFrame(animate);
   // calc elapsed time since last loop
@@ -265,26 +268,30 @@ function animate() {
   if (elapsed > fpsInterval) {
     then = now - (elapsed % fpsInterval);
     animatingList.forEach(function(item, index) {
-      //console.log(item)
+      console.log(item)
       var itemID = item.Name.split("_")[0] + "_";
       var selector = "#" + itemID;
       $("[id^='" + itemID + "']").attr("style", "display:none")
-			 var y= $("[id^='" + itemID + "']").length;
-
-      if (item.animationFrame < y * (animationItem.loopAmount+1)) {
+      var animationLength = $("[id^='" + itemID + "']").length;
+      //console.log(y);
+      if (item.animationFrame <= (animationLength * (animationItem.loopAmount+1))) {
         //var displayFrame = (animationFrame % animationItem.totalAnimationFrames) + 1
-				//wacky cal
-        var displayFrame = Math.abs((item.animationFrame + y - 2) % ((y - 1) * 2) - (y - 1)) + 1
+        //wacky cal
+        var displayFrame = Math.abs((item.animationFrame + animationLength - 2) % ((animationLength - 1) * 2) - (animationLength - 1)) + 1
 
         $(selector + displayFrame).attr("style", "display:inline")
         item.animationFrame++
       } else {
         thoughts(item);
         delete animatingList[index]
-        $(selector + 1).attr("style", "display:inline");
-				if(phase==1){
-        disappear($(selector + 1));
-}
+        if (item.stopAtEnd) {
+          $(selector + animationLength).attr("style", "display:inline");
+        } else {
+          $(selector + 1).attr("style", "display:inline");
+        }
+        if (phase == 1) {
+          disappear($(selector + 1));
+        }
       }
     });
   }

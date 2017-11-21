@@ -7,12 +7,12 @@
     "xValue": 45,
     "yValue": 20
   }, {
-    "Name": "Window1",
+    "Name": "Window",
     "Text": "This is a window. It is <b>not<\/b> an asthma trigger.",
     "xValue": 25,
     "yValue": 15
   }, {
-    "Name": "Cat_1",
+    "Name": "Cat",
     "Text": "How to avoid this trigger: Keep furry pets out of bedrooms and off furniture because the hair and dander can cling to these items. Wash furry pets & have them groomed frequently to remove the allergens as much as possible Change clothing before entering bedroom to avoid transfer of pet hair and dander from clothing to bedding, carpets etc. Vacuum with a high efficiency filter (HEPA) and damp dust often to remove the allergens from the rooms. Wash linens, blankets, curtains, and stuffed toys frequently to decrease allergens in room",
     "totalAnimationFrames": 3,
     "loopAmount": 3,
@@ -38,7 +38,7 @@
     "xValue": 15,
     "yValue": 40
   }, {
-    "Name": "Dust_1",
+    "Name": "Dust",
     "Text": "<b>House dust<\/b> is a common trigger that may also contain tiny particles of <b>pollen, mold, cloth fibers,<\/b> and <b>detergents<\/b>.<ul><li>Central heating and A\/C systems may help control dust, but be sure to change filters frequently.<\/li><br \/><li>Wipe away dust with a damp cloth and vacuum once a week.<\/li><br \/><li>Use furniture polish to help reduce dust and other allergens.<\/li><\/ul>",
     "totalAnimationFrames": 8,
     "loopAmount": 1,
@@ -54,7 +54,7 @@
     "yValue": 20,
     "isTrigger": true
   }, {
-    "Name": "Perfume_1",
+    "Name": "Perfume",
     "Text": "<p><strong>Sprays<\/strong> and <strong>strong scents<\/strong> can trigger asthma.<\/p>\n\n<ul>\n\t<li>Avoid use of sprays in home.<\/li>\n\t<br \/>\n\t<li>Avoid use of products that are heavily scented in home.<\/li>\n<\/ul>\n",
     "totalAnimationFrames": 4,
     "loopAmount": 3,
@@ -105,5 +105,10 @@
     "Text": "This is a brush. It is <b>not<\/b> an asthma trigger. You're getting warmer, though!",
     "xValue": 72,
     "yValue": 35
-  }]
+  },
+	{
+		"Name": "Intro",
+		"Text": "Phase 2",
+		"yValue": 10
+	}]
 }

@@ -55,5 +55,11 @@
   }, {
     "Name": "Door",
     "Text": "<b>Please find more triggers before continuing<\/b>"
-  }]
+  },{
+    "Name":"Carpet",
+    "Text":"<b>The Carpet trigers asthma<\/b>",
+    "xValue":30,
+    "yValue":30,
+    "isTrigger":true
+    }]
 }

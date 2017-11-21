@@ -2,7 +2,7 @@
 	"roomImage": "KitchenDollHouse.svg",
 	"targets": [{
 		"Name": "Ashtray",
-    "Text": "<p>This is a Ashtray</p>",
+    "Text": "<p>This not is a Ashtray</p>",
     "xValue": 45,
     "yValue": 20,
 		"isTrigger": true
@@ -15,7 +15,7 @@
 		"isTrigger": true
   },
 	{
-		"Name": "roach",
+		"Name": "Roach",
 		"Text": "<p>roach?</p>",
     "xValue": 45,
     "yValue": 20,
@@ -28,7 +28,7 @@
     "yValue": 20
 	},
 	{
-		"Name": "rat",
+		"Name": "Rat",
 		"Text": "<p>rat?</p>",
 		"xValue": 45,
 		"yValue": 20
