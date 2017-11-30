@@ -77,12 +77,14 @@ function loadNewRoom(roomName) {
 }
 
 function roomSvgLoad() {
+
   $(clickable).each(function(index, value) {
     console.log(value.Name)
     if ("audioFile" in value) {
       soundEffects[value.Name] = ss_soundbits("audio/" + value.audioFile);
     }
     if ("isTrigger" in value) {
+
       totalTriggers++;
       value.unClicked = true;
     }
@@ -94,6 +96,28 @@ function roomSvgLoad() {
     lookup[value.Name] = index;
 
   })
+var svg1 = document.getElementById('Layer_1');
+var bBox = svg1.getBBox();
+console.log(bBox)
+var newSVG=$('<svg/>',{x: 16.84625244140625, y: 16.673110961914062, width: 1320.7001953125, height: 806});
+
+
+
+$('svg').append(newSVG);
+$("body").html($("body").html());
+
+
+var cubbyCount=totalTriggers
+while  (cubbyCount--){
+
+
+
+}
+
+
+
+
+
   makeClickEvents();
 
   var item = getParameterByName("item") || "Intro"
@@ -142,14 +166,13 @@ function itemClicked(clickedItem) {
 };
 
 function disappear(it) {
-  console.log("dis", phase)
   it.animate({
-      opacity: 0
+      opacity: .5,
     },
     1000,
     function() {
 
-      $(this).css('visibility', 'hidden');
+      //$(this).css('visibility', 'hidden');
     }
   );
 
@@ -264,7 +287,7 @@ function animate() {
   // calc elapsed time since last loop
   now = Date.now();
   elapsed = now - then;
-  // if enough time has elapsed, draw the next frame
+  // if enough time has elapsed, dr)aw the next frame
   if (elapsed > fpsInterval) {
     then = now - (elapsed % fpsInterval);
     animatingList.forEach(function(item, index) {
@@ -289,8 +312,8 @@ function animate() {
         } else {
           $(selector + 1).attr("style", "display:inline");
         }
-        if (phase == 1) {
-          disappear($(selector + 1));
+        if (phase == 1 && item.isTrigger) {
+          disappear($("#"+item.Name));
         }
       }
     });

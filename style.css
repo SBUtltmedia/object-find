@@ -72,27 +72,34 @@ b {
 }
 #roomSVG {
     width: 100%;
-    position: absolute;
     top: 0;
     left: 0;
 }
 
 #triggersLeft {
     position: absolute;
-    top:2rem;
-    left:2rem;
+    top:3.25rem;
+    left:2.2rem;
     font-family: "Lucida Sans", sans-serif;
-    font-size: 6rem;
-    color: red;
+    font-size: 4em;
+    color: white;
+    padding: 10px;
+    background-color: #9EB3EB;
+    border-radius:1px;
+    border-color: white;
 }
 
 #phaseNum {
     position: absolute;
-    top:2rem;
-    right:2rem;
+    top:3.25rem;
+    right:.75rem;
     font-family: "Lucida Sans", sans-serif;
-    font-size: 6rem;
-    color: red;
+    font-size: 4em;
+    color: white;
+    padding: 1rem;
+    background-color: #9EB3EB;
+    border-radius:5px;
+    border-color: white;
 }
 
 
