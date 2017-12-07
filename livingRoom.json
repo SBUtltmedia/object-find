@@ -1,5 +1,5 @@
 {
-  "roomImage": "livingRoom1.svg", 
+  "roomImage": "LivingRoomResized.svg", 
   "nextRoom": "livingRoom",
   "targets": [
     {

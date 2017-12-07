@@ -28,7 +28,7 @@ rooms.forEach(function(room){
 			$.getJSON(room+".json", function(data) {
 				console.log(data)
 				for( i in data.targets){
-				if (data.targets[i].isTrigger = true){
+				if (data.targets[i].isTrigger == true){
 
 				var it = data.targets[i].Name;
 				$("#" + filePrefix).append("<p><a href='https://apps.tlt.stonybrook.edu/asthma/?edit=True&item=" + it +"&room=" + room + "&phase="+phase+"&triggersLeft=2'>" + it +"</a></p>");
