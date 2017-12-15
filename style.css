@@ -8,6 +8,12 @@ html {
   font-size: 100%;
 }
 
+#screen {
+	position:absolute;
+	height:100%;
+	overflow: hidden;
+}
+
 b {
     color: red;
 }
@@ -108,4 +114,19 @@ b {
     display: inline-block;
     padding: 2px 5px;
     background: #ccc;
+}
+
+#treasureChest {
+display: flex;
+width: 100%;
+border:  5px solid green;
+}
+
+.cubbyCopy {
+	border: 2px solid blue;
+
+
+}
+#screen{
+position:absolute;
 }

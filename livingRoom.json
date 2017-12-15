@@ -1,5 +1,5 @@
 {
-  "roomImage": "LivingRoomResized.svg", 
+  "roomImage": "LivingRoomResized.svg",
   "nextRoom": "livingRoom",
   "targets": [
     {
@@ -87,6 +87,7 @@
       "xValue": 30,
       "isTrigger": true,
       "yValue": 30,
+			"audioFile": "fireplace.mp3",
       "Name": "Fireplace"
     },
     {

@@ -13,6 +13,7 @@ var stop = false;
 var frameCount = 0;
 var nextRoom;
 var currentRoom;
+var startingWidth,startingHeight,aspect;
 var phaseText = ["Find the Triggers", "Ways to avoid the triggers:"]
 var phase = getParameterByName("phase");
 
@@ -53,10 +54,36 @@ $(function() {
 
 //setTimeout(resizeScreen,'200');																		//	For IE
 function resizeScreen() {
-	$("#roomSVG > svg").attr({
-		'width': $("html").width() + 'px',
-		'height': $("html").width() / 1.6 + 'px'
-	}); //	For IE
+	var w = $(window).width();
+	var h = $(window).height();
+
+	// If the aspect ratio is greater than or equal to 4:3, fix height and set width based on height
+	if ((w / h) >=aspect) {
+			stageHeight = h;
+			stageWidth = (aspect) * h;
+			stageLeft = (w - stageWidth) / 2;
+	        stageTop = 0;
+	}
+	// If the aspect ratio is less than 4:3, fix width and set height based on width
+	else {
+			stageWidth = w;
+			stageHeight = (aspect) * w;
+			stageTop = (h - stageHeight) / 2;
+	 stageLeft = 0;
+	}
+
+	// Set "screen" object width and height to stageWidth and stageHeight, and center screen
+	$("#screen").css({
+			width: stageWidth + "px",
+			height: stageHeight + "px",
+			left: stageLeft + "px",
+			top: stageTop + "px"
+	});
+
+	// $("#roomSVG > svg").attr({
+	// 	'width': $("html").width() + 'px',
+	// 	'height': $("html").width() / 1.6 + 'px'
+	// }); //	For IE
 	//console.log($("html").width())
 	$("html").css('fontSize', $("html").width() / 120 + "px");
 }
@@ -66,7 +93,6 @@ function loadNewRoom(roomName) {
 	$('#phaseNum').html(phaseText[phase]);
 	totalTriggers = 0;
 	$.getJSON(roomName + ".json", function(data) {
-		console.log(data);
 		nextRoom = data.nextRoom;
 
 		clickable = data.targets;
@@ -86,26 +112,48 @@ function roomSvgLoad() {
 			soundEffects[value.Name] = ss_soundbits("audio/" + value.audioFile);
 		}
 		if ("isTrigger" in value) {
-			/*
-			var cubbyDiv = $( ".cubbyCopier" ).clone()
-			cubbyDiv.attr("id" ,  "cubby_" + value.Name)
-			cubbyDiv.attr("class",   "cubbyCopy")
-				$("#treasureChest").append(cubbyDiv)
-			var cubbySVG= $("#cubby_" + value.Name+" svg");
 
-			jQuery("#" + value.Name).detach().appendTo(cubbySVG)
-			//$("body").append(cubbyDiv)
-			*/
+			if (phase == 1) {
+				var cubbyDiv = $( ".cubbyCopier" ).clone()
+				cubbyDiv.attr("id" ,  "cubby_" + value.Name)
+				cubbyDiv.attr("class",   "cubbyCopy")
+					$("#treasureChest").append(cubbyDiv)
+				var cubbySVG= $("#cubby_" + value.Name+" svg");
+
+
+				var cubbyItem =	jQuery("#" + value.Name).clone();
+
+				cubbyItem.attr("id", "cubbySVG_"+value.Name);
+				cubbyItem.appendTo(cubbySVG).css('opacity', '0');
+
+				$("#cubbySVG_"+value.Name+' g[id]').each(function(item,val){
+
+var oldID = $(val).attr("id");
+$(val).attr("id","cubbySVG_"+oldID )
+
+
+
+				})
+
+				//console.log(triggerItem);
+
+				//$("body").append(cubbyDiv)
+			}
+
 			totalTriggers++;
 			value.unClicked = true;
 		}
+		$('.cubbyCopy').css("width",(100/totalTriggers)+"%")
 		triggersLeft = getParameterByName("triggersLeft") || totalTriggers;
 
 		displayTriggersLeft();
 
 		$("#" + value.Name).addClass("clickable")
 		lookup[value.Name] = index;
-
+		startingWidth=$("#screen").width();
+		startingHeight=$("#screen").height();
+		aspect=startingWidth/startingHeight;
+		console.log(aspect)
 	})
 
   /*
@@ -166,21 +214,31 @@ function itemClicked(clickedItem) {
 };
 
 function disappear(it) {
+	var xerox = $("#cubbySVG_"+$(it).attr('id'));
 	it.animate({
 			opacity: 0,
 		},
 		1000,
 		function() {
 
-			//$(this).css('visibility', 'hidden');
+
 		}
 	);
+	xerox.animate({
+			opacity: 1,
+		},
+		1000,
+		function() {
+
+
+		}
+	);
+
 
 }
 
 
 function thoughts(it) {
-	console.log(it)
 	$("#thoughtBubble").removeClass("thoughtPop");
 
 
@@ -257,7 +315,6 @@ function countTriggers(item) {
 }
 
 function changePhase() {
-	console.log("phase")
 	phase = phase == 0 ? 1 : 0;
 }
 
