@@ -28,7 +28,9 @@
       "xValue": 40,
       "isTrigger": true,
       "yValue": 50,
-      "Name": "Sneakers"
+      "Name": "Sneakers",
+      "totalAnimationFrames": 2,
+      "loopAmount":2
     },
     {
       "Text": [

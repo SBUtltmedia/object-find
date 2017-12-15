@@ -49,6 +49,22 @@ $(function() {
 
 	resizeScreen();
 
+    $('#scalerDiv input').on("change",function (evt){
+          var factorTranslate=50;
+        var item=$('#item').val()
+           var factorScale=.05;
+         var scale=$('#scale').val()*factorScale;                  
+        var translateX=($('#translateX').val()-50)*factorTranslate;   
+     var translateY=($('#translateY').val()-50)*factorTranslate;   
+     var cubbyItem= $("#cubbySVG_"+item).attr("transform",`translate(${translateX},${translateY}) scale(${scale})`);
+     console.log(`"thumbScale":"translate(${translateX},${translateY}) scale(${scale})"`)
+                            
+                            
+    }
+                            )
+    
+    
+    
 });
 
 
@@ -74,7 +90,7 @@ function resizeScreen() {
 
 	// Set "screen" object width and height to stageWidth and stageHeight, and center screen
 	$("#screen").css({
-			width: stageWidth + "px",
+			width: stageWidth+ "px",
 			height: stageHeight + "px",
 			left: stageLeft + "px",
 			top: stageTop + "px"
@@ -121,16 +137,22 @@ function roomSvgLoad() {
 				var cubbySVG= $("#cubby_" + value.Name+" svg");
 
 
+
 				var cubbyItem =	jQuery("#" + value.Name).clone();
 
 				cubbyItem.attr("id", "cubbySVG_"+value.Name);
-				cubbyItem.appendTo(cubbySVG).css('opacity', '0');
+				//cubbyItem.attr("transform","");
+				cubbyItem.appendTo(cubbySVG).css('opacity', '1');
+				//cubbyItem.attr("transform","translate(1600,20) scale(1) ");
+				cubbyItemBBox=document.getElementById("cubbySVG_"+value.Name).getBBox()
+				//cubbySVG.attr("viewBox","0 0 "+cubbyItemBBox.width+" "+cubbyItemBBox.height);
+				console.log();
 
 				$("#cubbySVG_"+value.Name+' g[id]').each(function(item,val){
 
 var oldID = $(val).attr("id");
 $(val).attr("id","cubbySVG_"+oldID )
-
+$(val).attr("transform","");
 
 
 				})
@@ -150,10 +172,12 @@ $(val).attr("id","cubbySVG_"+oldID )
 
 		$("#" + value.Name).addClass("clickable")
 		lookup[value.Name] = index;
-		startingWidth=$("#screen").width();
-		startingHeight=$("#screen").height();
-		aspect=startingWidth/startingHeight;
-		console.log(aspect)
+		//startingWidth=$("#screen").width();
+		//startingHeight=$("#screen").height();
+
+		//aspect=startingWidth/startingHeight;
+		aspect=1/1
+		//console.log(aspect,$("#screen").height(),$("#roomSVG").height())
 	})
 
   /*
