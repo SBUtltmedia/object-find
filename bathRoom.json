@@ -1,6 +1,6 @@
 {
-  "roomImage": "bathRoom.svg",
-  "nextRoom": "bathRoom", 
+  "roomImage": "BathroomResized.svg",
+  "nextRoom": "bathRoom",
   "targets": [
     {
       "Text": [
