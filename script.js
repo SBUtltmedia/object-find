@@ -126,7 +126,7 @@ function roomSvgLoad() {
 
         cubbyItem.attr("id", "cubbySVG_" + value.Name);
         //cubbyItem.attr("transform","");
-        cubbyItem.appendTo(cubbySVG).css('opacity', '0');
+        //cubbyItem.appendTo(cubbySVG).css('opacity', '0');
         cubbyItem.attr("transform", "translate(1600,20) scale(1) ");
 				console.log("cubbySVG_" + value.Name)
         cubbyItemBBox = document.getElementById("cubbySVG_" + value.Name).getBBox()
