@@ -24,11 +24,19 @@ b {
 display:none;
 
 }
+
+.bubble span,.bubble p{
+
+font-size: 1rem !important;;
+
+
+}
+
 .bubble {
     position: absolute;
 
-    /*max-width: 11rem;
-    min-height: 1rem;*/
+    max-width: 10rem;
+    min-height: 1rem;
     padding: 1rem;
     margin:1rem;
     background: #FFFFFF;
@@ -37,7 +45,7 @@ display:none;
     -webkit-border-radius: 0.3rem;
     -moz-border-radius: 0.3rem;
     border-radius: 1rem;
-    font-size: 2rem;
+
 }
 
 /*.bubble:after {
@@ -91,10 +99,10 @@ display:none;
 
 #triggersLeft {
     position: absolute;
-    top:3.25rem;
+    top:1.25rem;
     left:2.2rem;
     font-family: "Lucida Sans", sans-serif;
-    font-size: 4em;
+    font-size: 2em;
     color: white;
     padding: 10px;
     background-color: #9EB3EB;
@@ -104,10 +112,10 @@ display:none;
 
 #phaseNum {
     position: absolute;
-    top:3.25rem;
+    top:1.25rem;
     right:.75rem;
     font-family: "Lucida Sans", sans-serif;
-    font-size: 4em;
+    font-size: 2em;
     color: white;
     padding: 1rem;
     background-color: #9EB3EB;

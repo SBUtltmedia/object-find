@@ -1,89 +1,121 @@
 {
-  "roomImage": "BathroomResized.svg",
-  "nextRoom": "bathRoom",
-  "targets": [
-    {
-      "Text": [
-        "This is a MOLDY bath tub. It <b>is</b> an asthma trigger.",
-        "This is a MOLDY bath tub. It <b>is</b> an asthma trigger."
-      ],
-      "xValue": 45,
-      "isTrigger": true,
-      "yValue": 40,
-      "Name": "MOLDY"
-    },
-    {
-      "Name": "Cat",
-      "Text": [
-        "<b>Furry pets</b> can trigger an asthma attack. <ul><li>Keep furry pets out of bedrooms.</li><br /><li>Wash furry pets often (in the bathtub).</li></ul>",
-        "<b>Furry pets</b> can trigger an asthma attack. <ul><li>Keep furry pets out of bedrooms.</li><br /><li>Wash furry pets often (in the bathtub).</li></ul>"
-      ],
-      "isTrigger": true,
-      "audioFile": "Cat.mp3",
-      "yValue": 40,
-      "xValue": 25
-    },
-    {
-      "Text": [
-        "<b>Perfume</b> is a Japanese pop girl group from Hiroshima Prefecture, Japan",
-        "<b>Perfume</b> is a Japanese pop girl group from Hiroshima Prefecture, Japan"
-      ],
-      "xValue": 25,
-      "isTrigger": true,
-      "yValue": 41,
-      "Name": "Perfume"
-    },
-    {
-      "Text": [
-        "<b>hairspray</b> is another fun aerosol which can trigger Aesthma symptoms",
-        "<b>hairspray</b> is another fun aerosol which can trigger Aesthma symptoms"
-      ],
-      "xValue": 25,
-      "isTrigger": true,
-      "yValue": 41,
-      "Name": "hairspray"
-    },
-    {
-      "Text": [
-        "<b>Rug</b> stays on the floor and can collect mad <b>allergens</b>",
-        "<b>Rug</b> stays on the floor and can collect mad <b>allergens</b>"
-      ],
-      "xValue": 25,
-      "isTrigger": true,
-      "yValue": 52,
-      "Name": "RUG"
-    },
-    {
-      "Text": [
-        "This Plunger <b>Isn't</b> an Asthma Trigger that I know of",
-        "This Plunger <b>Isn't</b> an Asthma Trigger that I know of"
-      ],
-      "Name": "Plunger",
-      "yValue": 52,
-      "xValue": 39
-    },
-    {
-      "Text": [
-        "Chemicals like <b>Clorox</b> Bleach can be very dangerous",
-        "Chemicals like <b>Clorox</b> Bleach can be very dangerous"
-      ],
-      "xValue": 25,
-      "isTrigger": true,
-      "yValue": 52,
-      "Name": "clorox"
-    },
-    {
-      "Name": "Door"
-    },
-    {
-      "Text": [
-        "Other Chemicals like <b>Febreze</b> air cleaners can actually trigger reactions as well.",
-        "Other Chemicals like <b>Febreze</b> air cleaners can actually trigger reactions as well."
-      ],
-      "xValue": 18,
-      "isTrigger": true,
-      "yValue": 52,
-      "Name": "Febreze"
-    }
-  ]
+	"roomImage": "BathroomResized.svg",
+	"nextRoom": "kitchen",
+	"targets": [{
+			"Text": [
+				"This is a MOLDY bath tub. It <b>is</b> an asthma trigger.",
+				"This is a MOLDY bath tub. It <b>is</b> an asthma trigger."
+			],
+			"isTrigger": true,
+			"Name": "Tub",
+			"totalAnimationFrames": 4,
+			"stopAtEnd": true,
+
+
+		},
+		{
+			"Name": "Cat",
+			"Text": [
+				"<b>Furry pets</b> can trigger an asthma attack. <ul><li>Keep furry pets out of bedrooms.</li><br /><li>Wash furry pets often (in the bathtub).</li></ul>",
+				"<b>Furry pets</b> can trigger an asthma attack. <ul><li>Keep furry pets out of bedrooms.</li><br /><li>Wash furry pets often (in the bathtub).</li></ul>"
+			],
+			"isTrigger": true,
+			"audioFile": "Cat.mp3",
+
+
+		},
+		{
+			"Text": [
+				"<b>Perfume</b> is a Japanese pop girl group from Hiroshima Prefecture, Japan",
+				"<b>Perfume</b> is a Japanese pop girl group from Hiroshima Prefecture, Japan"
+			],
+			"isTrigger": true,
+			"Name": "Perfume",
+			"audioFile": "Spray.mp3",
+			"totalAnimationFrames": 4,
+
+
+		},
+		{
+			"Text": [
+				"<b>hairspray</b> is another fun aerosol which can trigger Aesthma symptoms",
+				"<b>hairspray</b> is another fun aerosol which can trigger Aesthma symptoms"
+			],
+			"isTrigger": true,
+			"Name": "HairSpray",
+			"audioFile": "Spray.mp3",
+			"totalAnimationFrames": 4,
+
+
+		},
+		{
+			"Text": [
+				"<b>Rug</b> stays on the floor and can collect mad <b>allergens</b>",
+				"<b>Rug</b> stays on the floor and can collect mad <b>allergens</b>"
+			],
+			"isTrigger": true,
+			"Name": "Rug",
+	    
+
+		},
+		{
+			"Text": [
+				"This Plunger <b>Isn't</b> an Asthma Trigger that I know of",
+				"This Plunger <b>Isn't</b> an Asthma Trigger that I know of"
+			],
+			"Name": "Plunger",
+
+
+		},
+		{
+			"Text": [
+				"Chemicals like <b>Clorox</b> Bleach can be very dangerous",
+				"Chemicals like <b>Clorox</b> Bleach can be very dangerous"
+			],
+			"isTrigger": true,
+			"Name": "Clorox",
+
+
+		},
+		{
+			"Name": "Door",
+
+
+		},
+		{
+			"Text": [
+				"Other Chemicals like <b>Febreze</b> air cleaners can actually trigger reactions as well.",
+				"Other Chemicals like <b>Febreze</b> air cleaners can actually trigger reactions as well."
+			],
+			"isTrigger": true,
+			"Name": "Febreze",
+			"audioFile": "Spray.mp3",
+
+
+		},
+		{
+			"Text": [
+				"Its a sink </b> Remember to wash your hands",
+				"Its a sink </b> Remember to wash your hands"
+			],
+			"isTrigger": true,
+			"Name": "Sink",
+			"totalAnimationFrames": 2,
+			"loopAmount": 2,
+
+
+		},
+		{
+			"Text": [
+				"Its a Toilet </b> I think the cat was using it",
+				"Its a Toilet </b> I think the cat was using it"
+			],
+			"isTrigger": true,
+			"Name": "Toilet",
+			"totalAnimationFrames": 4,
+			"audioFile": "Toilet.mp3",
+
+
+		}
+	]
 }
