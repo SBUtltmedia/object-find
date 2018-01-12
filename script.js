@@ -1,6 +1,7 @@
 var clickable;
 var defaultFrameRate = 5
 var lookup = {};
+var items={};
 var animationItem;
 var animationFrame;
 var soundEffects = {};
@@ -16,7 +17,8 @@ var currentRoom;
 var startingWidth, startingHeight, aspect;
 var phaseText = ["Find the Triggers", "Ways to avoid the triggers:"]
 var phase = getParameterByName("phase");
-
+var factorTranslate = 1;
+var factorScale = 1;
 if (!phase) {
   phase = 0
 }
@@ -48,6 +50,25 @@ $(function() {
   loadNewRoom(currentRoom);
 
   resizeScreen();
+
+  $('#scalerDiv input').on("change", function(evt) {
+
+    var item = $('#item').val()
+
+    factorTranslate = $('#factorTranslate').val();
+    factorScale = $('#factorScale').val();
+    var scale = ($('#scale').val()) * factorScale + .5;
+    var translateX = ($('#translateX').val() - 50) * factorTranslate;
+    var translateY = ($('#translateY').val() - 50) * factorTranslate;
+    console.log(translateX, translateY, scale);
+
+
+
+    var cubbyItem = $("#cubbySVG_" + item).attr("transform", `translate(${translateX},${translateY}) scale(${scale})`);
+    console.log(`"Scale":"translate(${translateX},${translateY}) scale(${scale})"`)
+
+
+  })
 
 });
 
@@ -89,25 +110,29 @@ function resizeScreen() {
 }
 
 function loadNewRoom(roomName) {
-
+  currentRoom = roomName;
+  console.log(roomName)
   $('#phaseNum').html(phaseText[phase]);
   totalTriggers = 0;
-  $.getJSON(roomName + ".json", function(data) {
+  var Dev = getParameterByName("Dev") || "";
+  $.getJSON(roomName + Dev + ".json", function(data) {
     nextRoom = data.nextRoom;
-
+    console.log(roomName + "what")
     clickable = data.targets;
     //$("#room").css("font-size", "100px");
-    $("#roomSVG").load("img/" + data.roomImage, roomSvgLoad);
+    $("#roomSVG").load("img/rooms/" + data.roomImage, roomSvgLoad);
 
     resizeScreen();
+  }).fail(function() {
+    console.log(roomName + "Dev.json");
   })
 }
 
 
 function roomSvgLoad() {
-
+  $("#treasureChest").empty();
   $(clickable).each(function(index, value) {
-    console.log(value.Name)
+
     if ("audioFile" in value) {
       soundEffects[value.Name] = ss_soundbits("audio/" + value.audioFile);
     }
@@ -117,6 +142,7 @@ function roomSvgLoad() {
         var cubbyDiv = $(".cubbyCopier").clone()
         cubbyDiv.attr("id", "cubby_" + value.Name)
         cubbyDiv.attr("class", "cubbyCopy")
+
         $("#treasureChest").append(cubbyDiv)
         var cubbySVG = $("#cubby_" + value.Name + " svg");
 
@@ -126,21 +152,35 @@ function roomSvgLoad() {
 
         cubbyItem.attr("id", "cubbySVG_" + value.Name);
         //cubbyItem.attr("transform","");
-        //cubbyItem.appendTo(cubbySVG).css('opacity', '0');
-        cubbyItem.attr("transform", "translate(1600,20) scale(1) ");
-				console.log("cubbySVG_" + value.Name)
+        cubbyItem.appendTo(cubbySVG)
+        //  cubbyItem.attr("transform", "translate(1600,20) scale(1) ");
+        console.log("cubbySVG_" + value.Name)
         cubbyItemBBox = document.getElementById("cubbySVG_" + value.Name).getBBox()
         //cubbySVG.attr("viewBox","0 0 "+cubbyItemBBox.width+" "+cubbyItemBBox.height);
         console.log();
-
+        //$("cubbySVG_" + value.Name).css("transform", value.thumbScale || "")
         $("#cubbySVG_" + value.Name + ' g[id]').each(function(item, val) {
 
           var oldID = $(val).attr("id");
           $(val).attr("id", "cubbySVG_" + oldID)
-          $(val).attr("transform", "");
+        //  console.log("cubbySVG_" + oldID)
+
+          //$(val).attr("transform", value.thumbScale || "");
 
 
         })
+
+
+
+          document.getElementById("cubbySVG_"+value.Name).setAttribute("transform", value.thumbScale || "");
+          //$(val).attr("transform", value.thumbScale || "");
+
+
+
+
+
+
+
 
         //console.log(triggerItem);
 
@@ -177,9 +217,14 @@ function roomSvgLoad() {
 
   var item = getParameterByName("item") || "Intro"
 
+  console.log(item)
   $('#' + item).trigger('click')
+  $('#item').val(item)
+  //"translate(275,-350) scale(1.3)"
+  //var itemObject = clickable.find(function(d){return d.Name==item})
 
-
+  $('#factorTranslate').val(factorTranslate)
+  $('#factorScale').val(factorScale)
   resizeScreen(); //	For IE
 }
 
@@ -189,25 +234,20 @@ function makeClickEvents() {
     console.log(evt)
 
     var clickedItem = evt.currentTarget.id
-    if (clickedItem == "Door") {
-      if (!triggersLeft) {
-        changePhase();
-        loadNewRoom(nextRoom);
-        evt.preventDefault();
-        return;
-      }
-    }
+
     // $(evt.target).closest('.clickable').attr("id");
     itemClicked(clickedItem)
   });
 }
 
 function itemClicked(clickedItem) {
+  console.log(clickedItem)
   var item = clickable[lookup[clickedItem]];
 
 
   var fps = item.frameRate || defaultFrameRate;
   if ("audioFile" in item) {
+
     soundEffects[item.Name].playclip();
   }
   if ("isTrigger" in item) {
@@ -225,7 +265,7 @@ function itemClicked(clickedItem) {
 function disappear(it) {
   var xerox = $("#cubbySVG_" + $(it).attr('id'));
   it.animate({
-      opacity: 0,
+      opacity: .1,
     },
     1000,
     function() {
@@ -246,6 +286,22 @@ function disappear(it) {
 
 }
 
+function transition() {
+  if (!triggersLeft) {
+    triggersLeft = totalTriggers;
+    var room = currentRoom;
+    console.log(currentRoom)
+    if (phase == 1) {
+      console.log(currentRoom, nextRoom)
+      room = nextRoom;
+    }
+    changePhase();
+    loadNewRoom(room);
+    console.log(room)
+    return;
+  }
+
+}
 
 function thoughts(it) {
   $("#thoughtBubble").removeClass("thoughtPop");
@@ -265,22 +321,22 @@ function thoughts(it) {
   $("#close").click(function(evt) {
 
 
-		$("#thoughtBubble").css({
+    $("#thoughtBubble").css({
       "display": "none"
     });
 
-		if (phase == 1 && it.isTrigger) {
-			disappear($("#" + it.Name));
-		}
+    if (phase == 1 && it.isTrigger) {
+      disappear($("#" + it.Name));
+    }
 
-
+    transition();
   });
 
   function displayThought() {
-console.log(it.xValue||50 )
+    console.log(it.xValue || 50)
     $("#thoughtBubble").css({
-      "left": it.xValue||50 + "%",
-      "top": it.yValue||50  + "%"
+      "left": it.xValue || 25 + "%",
+      "top": it.yValue || 25 + "%"
     });
     $("#thoughtBubble").addClass("thoughtPop");
     $("#thoughtBubble").css("display", "inline");
@@ -365,11 +421,29 @@ function animate() {
     then = now - (elapsed % fpsInterval);
     animatingList.forEach(function(item, index) {
 
-      var itemID = item.Name.split("_")[0] + "_";
+      var itemID = item.Name.split("-")[0] + "-";
       var selector = "#" + itemID;
-      $("[id^='" + itemID + "']").attr("style", "display:none")
-      var animationLength = $("[id^='" + itemID + "']").length;
+      var animationLength = 0
       //console.log(y);
+      $("[id^='" + itemID + "']").each(function(idx, val) {
+
+          if (RegExp(itemID + '[0-9]*$').test(val.id)) {
+            $(val).attr("style", "display:none")
+            animationLength++;
+          }
+
+
+        }
+
+
+
+      )
+
+
+
+
+
+
       if (item.animationFrame <= (animationLength * (animationItem.loopAmount + 1))) {
         //var displayFrame = (animationFrame % animationItem.totalAnimationFrames) + 1
         //wacky cal

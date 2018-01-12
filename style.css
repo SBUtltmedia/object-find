@@ -16,6 +16,16 @@ html {
 	margin:0 60%  0 0;
 }
 
+input[type=range]
+{
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+    width: 8px;
+    height: 175px;
+    padding: 0 5px;
+}
+
+
 b {
     color: red;
 }
@@ -35,7 +45,6 @@ font-size: 1rem !important;;
 .bubble {
     position: absolute;
 
-    max-width: 10rem;
     min-height: 1rem;
     padding: 1rem;
     margin:1rem;
