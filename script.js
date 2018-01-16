@@ -151,40 +151,20 @@ function roomSvgLoad() {
         var cubbyItem = jQuery("#" + value.Name).clone();
 
         cubbyItem.attr("id", "cubbySVG_" + value.Name);
-        //cubbyItem.attr("transform","");
-        cubbyItem.appendTo(cubbySVG)
-        //  cubbyItem.attr("transform", "translate(1600,20) scale(1) ");
+
+        cubbyItem.appendTo(cubbySVG).css('opacity', '0');
         console.log("cubbySVG_" + value.Name)
         cubbyItemBBox = document.getElementById("cubbySVG_" + value.Name).getBBox()
-        //cubbySVG.attr("viewBox","0 0 "+cubbyItemBBox.width+" "+cubbyItemBBox.height);
         console.log();
-        //$("cubbySVG_" + value.Name).css("transform", value.thumbScale || "")
         $("#cubbySVG_" + value.Name + ' g[id]').each(function(item, val) {
 
           var oldID = $(val).attr("id");
           $(val).attr("id", "cubbySVG_" + oldID)
-        //  console.log("cubbySVG_" + oldID)
-
-          //$(val).attr("transform", value.thumbScale || "");
-
 
         })
 
-
-
           document.getElementById("cubbySVG_"+value.Name).setAttribute("transform", value.thumbScale || "");
-          //$(val).attr("transform", value.thumbScale || "");
-
-
-
-
-
-
-
-
-        //console.log(triggerItem);
-
-        //$("body").append(cubbyDiv)
+          
       }
 
       totalTriggers++;
@@ -265,7 +245,7 @@ function itemClicked(clickedItem) {
 function disappear(it) {
   var xerox = $("#cubbySVG_" + $(it).attr('id'));
   it.animate({
-      opacity: .1,
+      opacity: 0,
     },
     1000,
     function() {

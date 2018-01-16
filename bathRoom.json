@@ -6,51 +6,60 @@
     "isTrigger": true,
     "Name": "Mold",
     "totalAnimationFrames": 5,
-    "stopAtEnd": true
+    "stopAtEnd": true,
+    "thumbScale":"translate(-310,-750) scale(2)"
   }, {
     "Name": "Cat",
     "Text": ["<b>Furry pets<\/b> can trigger an asthma attack. <ul><li>Keep furry pets out of bedrooms.<\/li><br \/><li>Wash furry pets often (in the bathtub).<\/li><\/ul>", "<b>Furry pets<\/b> can trigger an asthma attack. <ul><li>Keep furry pets out of bedrooms.<\/li><br \/><li>Wash furry pets often (in the bathtub).<\/li><\/ul>"],
     "isTrigger": true,
-    "audioFile": "Cat.mp3"
+    "audioFile": "Cat.mp3",
+    "thumbScale":"translate(-219,-410) scale(2)"
   }, {
     "Text": ["<p><strong>Perfume<\/strong> is a Japanese pop girl group from Hiroshima Prefecture, Japan<\/p>\n", "<b>Perfume<\/b> is a Japanese pop girl group from Hiroshima Prefecture, Japan"],
     "isTrigger": true,
     "Name": "Perfume",
     "audioFile": "Spray.mp3",
-    "totalAnimationFrames": 4
+    "totalAnimationFrames": 4,
+    "thumbScale":"translate(-14600,-3000) scale(11)"
   }, {
     "Text": ["<b>hairspray<\/b> is another fun aerosol which can trigger Aesthma symptoms", "<b>hairspray<\/b> is another fun aerosol which can trigger Aesthma symptoms"],
     "isTrigger": true,
     "Name": "HairSpray",
     "audioFile": "Spray.mp3",
-    "totalAnimationFrames": 4
+    "totalAnimationFrames": 4,
+    "thumbScale":"translate(-13400,-2870) scale(11)"
   }, {
     "Text": ["<b>Rug<\/b> stays on the floor and can collect mad <b>allergens<\/b>", "<b>Rug<\/b> stays on the floor and can collect mad <b>allergens<\/b>"],
     "isTrigger": true,
-    "Name": "Rug"
+    "Name": "Rug",
+    "thumbScale":"translate(-100,-890) scale(2)"
   }, {
     "Text": ["This Plunger <b>Isn't<\/b> an Asthma Trigger that I know of", "This Plunger <b>Isn't<\/b> an Asthma Trigger that I know of"],
     "Name": "Plunger"
   }, {
     "Text": ["Chemicals like <b>Clorox<\/b> Bleach can be very dangerous", "Chemicals like <b>Clorox<\/b> Bleach can be very dangerous"],
     "isTrigger": true,
-    "Name": "Clorox"
+    "Name": "Clorox",
+    "thumbScale":"translate(-9900,-5400) scale(6)"
   }, {
     "Text": ["Other Chemicals like <b>Febreze<\/b> air cleaners can actually trigger reactions as well.", "Other Chemicals like <b>Febreze<\/b> air cleaners can actually trigger reactions as well."],
     "isTrigger": true,
     "Name": "Febreze",
-    "audioFile": "Spray.mp3"
+    "audioFile": "Spray.mp3",
+    "thumbScale":"translate(-17400,-7600) scale(11)"
   }, {
     "Text": ["Its a sink <\/b> Remember to wash your hands", "Its a sink <\/b> Remember to wash your hands"],
     "isTrigger": true,
     "Name": "Sink",
     "totalAnimationFrames": 2,
-    "loopAmount": 2
+    "loopAmount": 2,
+    "thumbScale":"translate(-6990,-3640) scale(7)"
   }, {
     "Text": ["Its a Toilet <\/b> I think the cat was using it", "Its a Toilet <\/b> I think the cat was using it"],
     "isTrigger": true,
     "Name": "Toilet",
     "totalAnimationFrames": 4,
-    "audioFile": "Toilet.mp3"
+    "audioFile": "Toilet.mp3",
+    "thumbScale":"translate(-6550,-3500) scale(5)"
   }]
 }

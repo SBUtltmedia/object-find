@@ -4,18 +4,21 @@
     "Text": ["<p>This is a Ashtray<\/p>\n", "<p>This not is a Ashtray<\/p>"],
     "isTrigger": true,
     "Name": "Ashtray",
-    "totalAnimationFrames": 5
+    "totalAnimationFrames": 5,
+    "thumbScale":"translate(-7000,-9001) scale(11)"
   }, {
     "Text": ["<p>I&#39;M BUGGING OUT MAN?<\/p>\n", "<p>I'M BUGGING OUT MAN?<\/p>"],
     "isTrigger": true,
     "Name": "BugSpray",
-    "totalAnimationFrames": 2
+    "totalAnimationFrames": 2,
+    "thumbScale":"translate(-5250,-8900) scale(12)"
   }, {
     "Name": "Roach",
     "Text": ["<p>roach?<\/p>", "<p>roach?<\/p>"],
     "loopAmount": 0,
     "frameRate": 7,
-    "isTrigger": true
+    "isTrigger": true,
+    "thumbScale":"translate(-10590,-6500) scale(8)"
   }, {
     "Text": ["<p>Candles?<\/p>", "<p>Candles?<\/p>"],
     "Name": "Candle",
@@ -37,14 +40,16 @@
   }, {
     "Text": ["<p>Crack?<\/p>", "<p>Crack?<\/p>"],
     "isTrigger": true,
-    "Name": "MouseHole"
+    "Name": "MouseHole",
+    "thumbScale":"translate(-1900,-8800) scale(11)"
   }, {
     "Text": ["<p>Pan?<\/p>", "<p>Pan?<\/p>"],
     "loopAmount": 0,
     "frameRate": 3,
     "isTrigger": true,
     "Name": "Pan",
-    "stopAtEnd": true
+    "stopAtEnd": true,
+    "thumbScale":"translate(-9600,-6200) scale(11)"
   }, {
     "Text": ["<p>Stove?<\/p>", "<p>Stove?<\/p>"],
     "Name": "Stove"
@@ -52,14 +57,16 @@
     "Text": ["<p>Febreze?<\/p>", "<p>Febreze?<\/p>"],
     "frameRate": 3,
     "isTrigger": true,
-    "Name": "Febreze"
+    "Name": "Febreze",
+    "thumbScale":"translate(-5000,-7450) scale(11)"
   }, {
     "Text": ["<p>?dogBowl<\/p>", "<p>?dogBowl<\/p>"],
     "Name": "dogBowl"
   }, {
     "Text": ["<p>?mold<\/p>", "<p>?mold<\/p>"],
     "isTrigger": true,
-    "Name": "Mold"
+    "Name": "Mold",
+    "thumbScale":"translate(-3400,-1900) scale(3)"
   }, {
     "Name": "Garbage",
     "Text": ["<p> Garbage <\/p>", "<p> Garbage <\/p>"]
