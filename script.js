@@ -1,7 +1,7 @@
 var clickable;
 var defaultFrameRate = 5
 var lookup = {};
-var items={};
+var items = {};
 var animationItem;
 var animationFrame;
 var soundEffects = {};
@@ -13,18 +13,23 @@ var triggersLeft;
 var stop = false;
 var frameCount = 0;
 var nextRoom;
+var bubbleActive = false;
 var currentRoom;
 var startingWidth, startingHeight, aspect;
 var phaseText = ["Find the Triggers", "Ways to avoid the triggers:"]
 var phase = getParameterByName("phase");
 var factorTranslate = 1;
 var factorScale = 1;
+var clickedList = [];
 if (!phase) {
   phase = 0
 }
 $('#phaseNum').html(phaseText[phase]);
 
-
+function consolelog(foo)
+{
+  //console.log(foo)
+}
 
 var fps, fpsInterval, startTime, now, then, elapsed;
 $(window).resize(function() {
@@ -60,12 +65,12 @@ $(function() {
     var scale = ($('#scale').val()) * factorScale + .5;
     var translateX = ($('#translateX').val() - 50) * factorTranslate;
     var translateY = ($('#translateY').val() - 50) * factorTranslate;
-    console.log(translateX, translateY, scale);
+    consolelog(translateX, translateY, scale);
 
 
 
     var cubbyItem = $("#cubbySVG_" + item).attr("transform", `translate(${translateX},${translateY}) scale(${scale})`);
-    console.log(`"Scale":"translate(${translateX},${translateY}) scale(${scale})"`)
+    consolelog(`"Scale":"translate(${translateX},${translateY}) scale(${scale})"`)
 
 
   })
@@ -105,26 +110,26 @@ function resizeScreen() {
   // 	'width': $("html").width() + 'px',
   // 	'height': $("html").width() / 1.6 + 'px'
   // }); //	For IE
-  //console.log($("html").width())
+  //consolelog($("html").width())
   $("html").css('fontSize', $("html").width() / 120 + "px");
 }
 
 function loadNewRoom(roomName) {
   currentRoom = roomName;
-  console.log(roomName)
+  consolelog(roomName)
   $('#phaseNum').html(phaseText[phase]);
   totalTriggers = 0;
   var Dev = getParameterByName("Dev") || "";
   $.getJSON(roomName + Dev + ".json", function(data) {
     nextRoom = data.nextRoom;
-    console.log(roomName + "what")
+    consolelog(roomName + "what")
     clickable = data.targets;
     //$("#room").css("font-size", "100px");
     $("#roomSVG").load("img/rooms/" + data.roomImage, roomSvgLoad);
 
     resizeScreen();
   }).fail(function() {
-    console.log(roomName + "Dev.json");
+    consolelog(roomName + "Dev.json");
   })
 }
 
@@ -153,9 +158,9 @@ function roomSvgLoad() {
         cubbyItem.attr("id", "cubbySVG_" + value.Name);
 
         cubbyItem.appendTo(cubbySVG).css('opacity', '0');
-        console.log("cubbySVG_" + value.Name)
+        consolelog("cubbySVG_" + value.Name)
         cubbyItemBBox = document.getElementById("cubbySVG_" + value.Name).getBBox()
-        console.log();
+        consolelog();
         $("#cubbySVG_" + value.Name + ' g[id]').each(function(item, val) {
 
           var oldID = $(val).attr("id");
@@ -163,12 +168,13 @@ function roomSvgLoad() {
 
         })
 
-          document.getElementById("cubbySVG_"+value.Name).setAttribute("transform", value.thumbScale || "");
-          
+        document.getElementById("cubbySVG_" + value.Name).setAttribute("transform", value.thumbScale || "");
+
       }
 
       totalTriggers++;
       value.unClicked = true;
+      consolelog(value)
     }
     $('.cubbyCopy').css("width", (100 / totalTriggers) + "%")
     triggersLeft = getParameterByName("triggersLeft") || totalTriggers;
@@ -182,7 +188,7 @@ function roomSvgLoad() {
 
     //aspect=startingWidth/startingHeight;
     aspect = 1 / 1
-    //console.log(aspect,$("#screen").height(),$("#roomSVG").height())
+    //consolelog(aspect,$("#screen").height(),$("#roomSVG").height())
   })
 
   /*
@@ -197,7 +203,7 @@ function roomSvgLoad() {
 
   var item = getParameterByName("item") || "Intro"
 
-  console.log(item)
+  consolelog(item)
   $('#' + item).trigger('click')
   $('#item').val(item)
   //"translate(275,-350) scale(1.3)"
@@ -211,17 +217,24 @@ function roomSvgLoad() {
 function makeClickEvents() {
 
   $(".clickable").click(function(evt) {
-    console.log(evt)
+    if (!bubbleActive) {
 
-    var clickedItem = evt.currentTarget.id
+      consolelog(evt)
 
-    // $(evt.target).closest('.clickable').attr("id");
-    itemClicked(clickedItem)
+      var clickedItem = evt.currentTarget.id
+
+      var item = clickable[lookup[clickedItem]];
+      // $(evt.target).closest('.clickable').attr("id");
+      itemClicked(clickedItem)
+
+
+
+    }
   });
 }
 
 function itemClicked(clickedItem) {
-  console.log(clickedItem)
+  consolelog(clickedItem)
   var item = clickable[lookup[clickedItem]];
 
 
@@ -231,8 +244,10 @@ function itemClicked(clickedItem) {
     soundEffects[item.Name].playclip();
   }
   if ("isTrigger" in item) {
-    if (item.unClicked) {
+    if (item.unClicked && clickedList.indexOf(clickedItem) == -1) {
+
       countTriggers(item);
+      clickedList.push(clickedItem)
     }
 
   }
@@ -244,6 +259,7 @@ function itemClicked(clickedItem) {
 
 function disappear(it) {
   var xerox = $("#cubbySVG_" + $(it).attr('id'));
+  consolelog(xerox);
   it.animate({
       opacity: 0,
     },
@@ -270,14 +286,14 @@ function transition() {
   if (!triggersLeft) {
     triggersLeft = totalTriggers;
     var room = currentRoom;
-    console.log(currentRoom)
+    consolelog(currentRoom)
     if (phase == 1) {
-      console.log(currentRoom, nextRoom)
+      consolelog(currentRoom, nextRoom)
       room = nextRoom;
     }
     changePhase();
     loadNewRoom(room);
-    console.log(room)
+    consolelog(room)
     return;
   }
 
@@ -298,22 +314,29 @@ function thoughts(it) {
 
   displayThought()
   it.unClicked = false;
-  $("#close").click(function(evt) {
+    $("#close").off("click");
+  $("#close").on("click",function(evt) {
 
-
+console.log(evt);
+    bubbleActive = false;
     $("#thoughtBubble").css({
       "display": "none"
     });
-
     if (phase == 1 && it.isTrigger) {
+      consolelog(it);    if (phase == 1 && it.isTrigger) {
+            consolelog(it);
+            disappear($("#" + it.Name));
+          }
       disappear($("#" + it.Name));
     }
+
 
     transition();
   });
 
   function displayThought() {
-    console.log(it.xValue || 50)
+    bubbleActive = true;
+    consolelog(it.xValue || 50)
     $("#thoughtBubble").css({
       "left": it.xValue || 25 + "%",
       "top": it.yValue || 25 + "%"
@@ -321,7 +344,7 @@ function thoughts(it) {
     $("#thoughtBubble").addClass("thoughtPop");
     $("#thoughtBubble").css("display", "inline");
 
-    if (getParameterByName("edit")) {
+    if (getParameterByName("edit") == "True") {
 
       $('#thoughtBubble p').html('<form><textarea id=txtArea></textarea> </form>');
 
@@ -345,7 +368,7 @@ function thoughts(it) {
           window.location = "?edit=True&item=" + it.Name + "&room=" + currentRoom + "&phase=" + phase;
           ///  window.location = window.location.search
         });
-        console.log("" || it.Name)
+        consolelog("" || it.Name)
         event.preventDefault();
       })
 
@@ -404,7 +427,7 @@ function animate() {
       var itemID = item.Name.split("-")[0] + "-";
       var selector = "#" + itemID;
       var animationLength = 0
-      //console.log(y);
+      //consolelog(y);
       $("[id^='" + itemID + "']").each(function(idx, val) {
 
           if (RegExp(itemID + '[0-9]*$').test(val.id)) {
