@@ -16,7 +16,7 @@ var nextRoom;
 var bubbleActive = false;
 var currentRoom;
 var startingWidth, startingHeight, aspect;
-var phaseText = ["Find the Triggers", "Ways to avoid the triggers:"]
+var phaseText = ["Find the Triggers","Ways to avoid the triggers"];
 var phase = getParameterByName("phase");
 var factorTranslate = 1;
 var factorScale = 1;
@@ -54,7 +54,7 @@ $(function() {
 
   loadNewRoom(currentRoom);
 
-  resizeScreen();
+
 
   $('#scalerDiv input').on("change", function(evt) {
 
@@ -74,7 +74,7 @@ $(function() {
 
 
   })
-
+  resizeScreen();
 });
 
 
@@ -135,7 +135,9 @@ function loadNewRoom(roomName) {
 
 
 function roomSvgLoad() {
-  $("#treasureChest").empty();
+  //$("#treasureChest").empty();
+
+        if (phase == 0) {  $("#treasureChest").empty();}
   $(clickable).each(function(index, value) {
 
     if ("audioFile" in value) {
@@ -143,7 +145,8 @@ function roomSvgLoad() {
     }
     if ("isTrigger" in value) {
 
-      if (phase == 1) {
+      if (phase == 0) {
+
         var cubbyDiv = $(".cubbyCopier").clone()
         cubbyDiv.attr("id", "cubby_" + value.Name)
         cubbyDiv.attr("class", "cubbyCopy")
@@ -168,15 +171,17 @@ function roomSvgLoad() {
 
         })
 
+
         document.getElementById("cubbySVG_" + value.Name).setAttribute("transform", value.thumbScale || "");
-
+$('.cubbyCopy').css("width", (100 / totalTriggers) + "%")
+    resizeScreen();
       }
-
+      $("#cubbySVG_" + value.Name).css('opacity', '0');
       totalTriggers++;
       value.unClicked = true;
       consolelog(value)
     }
-    $('.cubbyCopy').css("width", (100 / totalTriggers) + "%")
+
     triggersLeft = getParameterByName("triggersLeft") || totalTriggers;
 
     displayTriggersLeft();
@@ -216,8 +221,10 @@ function roomSvgLoad() {
 
 function makeClickEvents() {
 
-  $(".clickable").click(function(evt) {
+  $(".clickable").on("click",function(evt) {
     if (!bubbleActive) {
+bubbleActive = true;
+
 
       consolelog(evt)
 
@@ -244,10 +251,10 @@ function itemClicked(clickedItem) {
     soundEffects[item.Name].playclip();
   }
   if ("isTrigger" in item) {
-    if (item.unClicked && clickedList.indexOf(clickedItem) == -1) {
+    if (item.unClicked ) {
 
       countTriggers(item);
-      clickedList.push(clickedItem)
+    //  clickedList.push(clickedItem)
     }
 
   }
@@ -258,8 +265,8 @@ function itemClicked(clickedItem) {
 };
 
 function disappear(it) {
-  var xerox = $("#cubbySVG_" + $(it).attr('id'));
-  consolelog(xerox);
+
+
   it.animate({
       opacity: 0,
     },
@@ -269,18 +276,24 @@ function disappear(it) {
 
     }
   );
+
+showTreasureBox(it)
+
+}
+
+function showTreasureBox(it){
+    var xerox = $("#cubbySVG_" + $(it).attr('id'));
   xerox.animate({
       opacity: 1,
     },
     1000,
     function() {
-
+    transition();
 
     }
   );
-
-
 }
+
 
 function transition() {
   if (!triggersLeft) {
@@ -314,32 +327,36 @@ function thoughts(it) {
 
   displayThought()
   it.unClicked = false;
+
     $("#close").off("click");
   $("#close").on("click",function(evt) {
 
-console.log(evt);
+
     bubbleActive = false;
     $("#thoughtBubble").css({
       "display": "none"
     });
-    if (phase == 1 && it.isTrigger) {
-      consolelog(it);    if (phase == 1 && it.isTrigger) {
-            consolelog(it);
+    if (it.isTrigger) {
+          if (phase == 1) {
+
             disappear($("#" + it.Name));
           }
-      disappear($("#" + it.Name));
+          else{
+                showTreasureBox($("#" + it.Name));
+          }
+
     }
 
 
-    transition();
+
   });
 
   function displayThought() {
     bubbleActive = true;
     consolelog(it.xValue || 50)
     $("#thoughtBubble").css({
-      "left": it.xValue || 25 + "%",
-      "top": it.yValue || 25 + "%"
+      "left": (it.xValue || 5) + "%",
+      "top": (it.yValue || 5) + "%"
     });
     $("#thoughtBubble").addClass("thoughtPop");
     $("#thoughtBubble").css("display", "inline");
