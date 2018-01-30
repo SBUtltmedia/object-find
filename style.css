@@ -143,10 +143,10 @@ font-size: 1rem !important;;
 
 #treasureChest {
   position: absolute;
-  left:5%;
+  left:10%;
 display: flex;
-width: 50%;
-border:  5px solid green;
+width: 80%;
+border:  5px solid yellow;
 }
 
 .cubbyCopy {

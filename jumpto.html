@@ -27,12 +27,19 @@ rooms.forEach(function(room){
 			thisList.append("<h3>" + room + " Phase "+ (phase+1)+"</h3>");
 			$.getJSON(room+".json", function(data) {
 				console.log(data)
+				var itemsClicked=[]
+				var trigger
 				for( i in data.targets){
+					var triggersLeft= data.targets.length-itemsClicked.length;
 				if (data.targets[i].isTrigger == true){
 
 				var it = data.targets[i].Name;
-				$("#" + filePrefix).append("<p><a href='https://apps.tlt.stonybrook.edu/asthma/?edit=True&item=" + it +"&room=" + room + "&phase="+phase+"&triggersLeft=2'>" + it +"</a></p>");
+				var anchor ="<p><a href='https://apps.tlt.stonybrook.edu/asthma/?edit=true&item=" + it +"&currentRoom=" + room + "&phase="+phase+"&itemsClicked="+   encodeURIComponent(JSON.stringify(itemsClicked))  +"'>" + it +"</a></p>";
 
+console.log(anchor)
+
+				$("#" + filePrefix).append(anchor);
+itemsClicked.push(it)
 				}
 
 

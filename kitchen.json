@@ -30,18 +30,14 @@
     "frameRate": 5,
     "Name": "Rat",
     "stopAtEnd": true,
-    "audioFile": "Mouse.mp3"
+    "audioFile": "Mouse.mp3",
+    "thumbScale":"translate(-1900,-8800) scale(11)"
   }, {
     "Name": "Dog",
     "Text": ["<p>Dog?<\/p>", "<p>Dog?<\/p>"],
     "loopAmount": 1,
     "frameRate": 3,
     "audioFile": "Dog-bark.mp3"
-  }, {
-    "Text": ["<p>Crack?<\/p>", "<p>Crack?<\/p>"],
-    "isTrigger": true,
-    "Name": "MouseHole",
-    "thumbScale":"translate(-1900,-8800) scale(11)"
   }, {
     "Text": ["<p>Pan?<\/p>", "<p>Pan?<\/p>"],
     "loopAmount": 0,
