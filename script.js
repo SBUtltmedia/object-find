@@ -77,13 +77,20 @@ $(window).resize(function() {
 
 
 $(function() {
-
+  //localStorage.removeItem("state")
   //state.phase = 0;
   $('#phaseNum').html(phaseText[state.phase]);
   state.itemsClicked = state.itemsClicked || [];
   if (!state.hasOwnProperty("currentRoom")) {
     state.currentRoom = "bedRoom";
   }
+  if (!state.hasOwnProperty("phase")) {
+    state.phase = 0;
+  }
+  if (!state.hasOwnProperty("edit")) {
+    state.edit = "false";
+  }
+
   console.log(state, state.currentRoom)
 
   loadNewRoom(state.currentRoom);
@@ -356,6 +363,7 @@ function transition() {
 }
 
 function thoughts(it) {
+  console.log(it);
   $("#thoughtBubble").removeClass("thoughtPop");
 
 

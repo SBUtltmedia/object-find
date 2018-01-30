@@ -36,8 +36,6 @@ rooms.forEach(function(room){
 				var it = data.targets[i].Name;
 				var anchor ="<p><a href='https://apps.tlt.stonybrook.edu/asthma/?edit=true&item=" + it +"&currentRoom=" + room + "&phase="+phase+"&itemsClicked="+   encodeURIComponent(JSON.stringify(itemsClicked))  +"'>" + it +"</a></p>";
 
-console.log(anchor)
-
 				$("#" + filePrefix).append(anchor);
 itemsClicked.push(it)
 				}
